@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+.divTop{
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 32px;
+    border-bottom: 2px solid #51c0ff ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+}
+.centerSelect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.center{
+   width: 140px;
+   height: 36px;
+   border: 1px solid #51c0ff; 
+   border-radius: 8px 0 0 8px;
+}
+.centerBtn{
+    width: 46px;
+    height: 36px;
+    border: 1px solid #51c0ff;
+    background-color: #51c0ff;
+    border-radius: 0 8px 8px 0;
+}
+.calendar{
+    width: 360px;
+    height: 360px;
+    background-color: #FCB83F;
+}
+/* .dailySchedule{
+    background-color: rgb(221, 241, 179);
+} */
+.dailySchedule-day{
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.dailySchedule-row{
+    width: 280px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 6px;
+    border-bottom: 1px solid #FCB83F;
+    margin-bottom: 12px;
+}
+.dailySchedule-row>p{
+    margin-right: 12px;  
+}
+.dailySchedule-time{
+    font-size: 22px;
+    line-height: 1.5;
+}
+.dailySchedule-class{
+    font-size: 20px;
+    line-height: 1.5;
+}
+.dailySchedule-content{
+    font-size: 16px;
+    line-height: 1.5;
+}
+/* divBottom */
+.divBottom{
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 32px;
+}
+.divBottom h1{
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+}
+.mySchedule-row, .attendanceCheck-row{
+    width: 280px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #FCB83F;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+.mySchedule-row>p, .attendanceCheck-row>p{
+    margin-right: 12px;  
+}
+.mySchedule-date, .attendanceCheck-date{
+    font-size: 22px;
+    line-height: 1.5;
+}
+.mySchedule-time, .attendanceCheck-time{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.mySchedule-class, .attendanceCheck-class{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.mySchedule-content, .attendanceCheck-content{
+    font-size: 16px;
+    line-height: 1.5;
+}
+.attendanceCheck-check{
+    font-size: 20px;
+    line-height: 1.5;
+}

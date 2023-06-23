@@ -1,0 +1,118 @@
+@charset "UTF-8";
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+.header{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headerIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+.logoImg{
+    width: 96px;
+    height: 96px;
+    padding-top: 7px;
+    margin-left: 4px;
+}
+.logoImg img{
+    width: 100%;
+
+}
+.title{
+    color: #51c0ff;
+    font-size: 56px;
+    line-height: 1.5;
+}
+
+.container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#msg{
+	text-align: center;
+    height: 30px;
+    text-align:center;
+    font-size:16px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+table{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.loginEmail, .loginPw{
+    width:360px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 1.5;
+    padding-left: 12px;
+    /* background-color: antiquewhite; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+}
+.loginEmail:focus, .loginPw:focus{
+    outline: 1px solid #51c0ff;
+    border-radius: 4px;
+}
+.tdBtn1{
+    height: 100px;
+}
+.loginBtn{
+    width: 360px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    color: #51c0ff;
+    border: 1px solid #51c0ff;
+    background-color: #fff;
+    cursor: pointer;
+}
+.helpBtn{
+    width: 120px;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #fff;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+.searchEmailBtn, .searchPwBtn{
+    border-right: 1px solid #666;
+}
+.joinBtn{
+    border-right: none ;
+}
+

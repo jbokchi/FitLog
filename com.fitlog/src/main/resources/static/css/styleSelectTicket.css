@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+.title{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 26px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.container{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+.centerName{
+    font-size: 22px;
+    line-height: 1.5;
+}
+.centerList>ul{
+    padding: 0;
+}
+
+.ticket{
+    position:relative;
+    border: 3px solid #51c0ff;
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 32px;
+}
+.ticketName{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.ticketDetail{
+    padding-left: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.reserveBtn{
+    position:absolute;
+    right: 30%;
+    bottom: 40%;
+    width: 70px;
+    height: 32px;
+    background-color: #fff;
+    border: 2px solid #FCB83F;
+    border-radius: 12px;
+    color: #FCB83F;
+    font-weight: bold;
+    cursor: pointer;
+}
