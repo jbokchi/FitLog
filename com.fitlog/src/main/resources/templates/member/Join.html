@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +21,7 @@
     </div><!--header-->
     <div class="container">
         <form  action=""  method="post" enctype="multipart/form-data"  onsubmit="return formCheck(this)">
+        	<input type="text" th:value="${type}">
             <table>
                 <tr>
                     <td class="tdImg" colspan="2">
@@ -71,7 +74,7 @@
                 	<td class="tdText"><label for="m_addr2">상세주소</label> </td>
                 	<td><input type="text" id="m_addr2" class="inputInfo" name="m_addr2"></td>
                 </tr>
-                <tr>
+<!--                 <tr>
                 	<td class="tdText"><label for="m_cate">구분</label> </td>
                 	<td>
                         <select name="m_cate" id="m_cate" class="selectInfo">
@@ -79,7 +82,7 @@
                             <option value="teacher">강사</option>
                         </select>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td colspan="2">
                         <button class="joinBtn">회원가입</button>

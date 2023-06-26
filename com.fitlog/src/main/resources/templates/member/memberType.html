@@ -6,18 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/styleMemberType.css}"rel="stylesheet">  
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <th:block th:replace="fragments/css::css"></th:block>
     <th:block th:replace="fragments/script::script"></th:block>  
     <title>회원 구분</title>
 </head>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	
+ 		function normalBtnClick(){
+			
+ 			const type = 'normal';
+ 			
+ 			$.ajax({
+				url : '/member/join',
+				type : 'POST',
+				data : type,
+				success : function(){
+					location.href = '/member/join'
+				},
+				error : function(){
+					alert('error');
+				}
+				
+			})
+		} 
+				
+	</script>
+</th:block>
 <body>
 	<div th:replace="fragments/header::header"></div>
         
     <div layout:fragment="content" class="content">
 		<div class="wrap">
 			<div class="divType">
-				<button class="typeBtn" value="normal">일반회원</button>
-				<button class="typeBtn" value="instructor">강사</button>
+				<button class="typeBtn" onclick="normalBtnClick()">일반회원</button>
+				<button class="typeBtn" >강사</button>
 			</div>
 		</div>
 	</div>
