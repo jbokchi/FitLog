@@ -1,49 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/css/styleMemberType.css}"rel="stylesheet">  
-    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <th:block th:replace="fragments/css::css"></th:block>
-    <th:block th:replace="fragments/script::script"></th:block>  
     <title>회원 구분</title>
 </head>
-<th:block layout:fragment="script">
-	<script th:inline="javascript">
-	
- 		function normalBtnClick(){
-			
- 			const type = 'normal';
- 			
- 			$.ajax({
-				url : '/member/join',
-				type : 'POST',
-				data : type,
-				success : function(){
-					location.href = '/member/join'
-				},
-				error : function(){
-					alert('error');
-				}
-				
-			})
-		} 
-				
-	</script>
-</th:block>
+
 <body>
-	<div th:replace="fragments/header::header"></div>
+	<th:block th:replace="fragments/header::header"></th:block>
         
-    <div layout:fragment="content" class="content">
+	<th:block layout:fragment="content">
 		<div class="wrap">
 			<div class="divType">
-				<button class="typeBtn" onclick="normalBtnClick()">일반회원</button>
-				<button class="typeBtn" >강사</button>
+				<a href="/member/normal/join">
+					<div id="normal" class="typeBtn">일반회원</div>
+				</a>
+				<a href="/member/instructor/join">
+					<div id="instructor" class="typeBtn">강사</div>
+				</a>
 			</div>
 		</div>
-	</div>
+	</th:block>
+	
 </body>
 </html>

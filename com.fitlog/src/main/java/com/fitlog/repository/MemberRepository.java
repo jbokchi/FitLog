@@ -6,5 +6,5 @@ import com.fitlog.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long>{
 
-	Member findByMemail(String memail);
+	Member findByEmail(String Email);
 }

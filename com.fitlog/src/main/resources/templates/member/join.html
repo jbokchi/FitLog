@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+
+    <link rel="stylesheet" href="/css/styleJoin.css">
+    <title>회원가입</title>
+</head>
+<body>
+	<th:block layout:fragment="content">
+	    <div class="container">
+	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto}>
+	            <table>
+	                <tr>
+	                    <td class="tdImg" colspan="2">
+	                        <div class="profileImg">
+	                            <img id="preview" src="/img/memberImg.png" alt="사진 미리보기">
+	                        </div>
+	                     
+	                        <div class="uploadImgBtn"> <label for="imgUpload">사진 올리기</label><input type="file" id="imgUpload" name="imageFile"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td colspan="2">
+	                        <div id="msg" class="msg"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label th:for="m_email">이메일</label></td>
+	                    <td><input type="email" th:field="*{email}" id="m_email" class="inputInfo" name="m_email"></td>
+	                	<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_pw">비밀번호</label></td>
+	                    <td>
+	                        <input type="password" th:field="*{password}" id="m_pw" class="inputInfo" name="m_pw" placehold="영문/숫자/특수문자 8~14자리" onblur="checkPw()">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_pw2">비밀번호 확인</label></td>
+	                    <td>
+	                        <input type="password" id="m_pw2" class="inputInfo" name="m_pw2" onblur="checkPw2()">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_nickname">닉네임</label></td>
+	                    <td>
+	                    	<input type="text" th:field="*{nicknm}" id="m_nicknm" class="inputInfo" name="m_nicknm" placehold="한글 초성 및 모음 , 특수문자 불가능" onblur="checkNickname()">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td colspan="2">
+	                        <button class="joinBtn">회원가입</button>
+	                    </td>
+	                </tr>
+	            </table>
+	        </form>
+	    </div><!--container-->
+	</th:block>
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			$(document).ready(function(){
+				var errorMessage = /*[[${errorMessage}]]*/"";
+				
+				if(errorMessage != null){
+					alert(errorMessage);
+				}
+			})
+			
+		//형식 검사 (정규표현식)
+    	let email = document.getElementById("m_email");
+    	let pw = document.getElementById("m_pw");
+    	let pw2 = document.getElementById("m_pw2");
+    	let nickname = document.getElementById("m_nicknm");
+    	
+/*     	function checkEmail(){
+    		//이메일 형식
+    		let pattern = /^[a-zA-Z0-9]([-_.]*?[a-zA-Z0-9])*@[a-zA-Z0-9]([-_]?[a-zA-Z0-9])*\.[a-zA-Z.]{2,10}$/;
+    		
+    		if(!pattern.test(email.value)){
+    			setMessage("이메일 형식이 아닙니다.", email);
+    			return false;
+    		}
+    		document.getElementById("msg").innerHTML=""
+    		return true;
+    	}
+    	
+    	function checkPw(){
+    		//영문/숫자/특수문자 8~14자리
+    		let pattern = /^(?=.*[a-zA-Z])(?=.*[~!@#$%^&*+-/=_])(?=.*[0-9]).{8,14}$/;
+    		
+    		if(!pattern.test(pw.value)){
+    			setMessage("영문자, 특수문자, 숫자 모두를 포함하여 8~12글자로 작성하세요.", pw);
+    			return false;
+    		}
+    		document.getElementById("msg").innerHTML=""
+    		return true;
+    	}
+    	
+    	//비밀번호 확인
+    	function checkPw2(){
+    		if(pw.value != pw2.value){
+    			setMessage("비밀번호가 일치하지 않습니다.", pw2);
+    			return false;
+    		} else {
+    			setMessage("비밀번호가 일치합니다.");
+    			document.getElementById("msg").innerHTML=""
+    			return true;
+    		}
+    	}
+    	
+    	function checkNickname(){
+    		//2자 이상, 한글 초성 및 모음 , 특수문자 불가능
+    		let pattern=/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/
+    		
+    		if(!pattern.test(nickname.value)){
+    			setMessage("한글 초성 및 모음, 특수문자는 불가능합니다.", nickname);
+    			return false;
+    		}
+    		document.getElementById("msg").innerHTML=""
+    		return true;
+    	}
+    	
+    	//알림메세지
+		function setMessage(msg, element) {
+			document.getElementById("msg").innerHTML = '<i class="fa fa-exclamation-circle">' + msg + '</i>';
+
+			if (element) {
+				element.select();
+			}
+		} */
+		</script>
+	</th:block>
+</body>
+</html>

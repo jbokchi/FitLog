@@ -22,7 +22,7 @@ public class MemberService {
 	
 	//중복된 이메일이 있으면 예외를 발생시킴
 	private void validateDuplicateMember(Member member) {
-		Member findMember = memberRepository.findByMemail(member.getMemail());
+		Member findMember = memberRepository.findByEmail(member.getEmail());
 		
 		//이미 이메일 주소가 존재하면
 		if(findMember != null) {

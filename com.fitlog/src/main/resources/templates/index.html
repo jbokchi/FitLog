@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/css/styleIndex.css}"rel="stylesheet">
-    
-    <th:block th:replace="fragments/css::css"></th:block>
-    <th:block th:replace="fragments/script::script"></th:block>
-    
+    <link th:href="@{/css/styleIndex.css}"rel="stylesheet">    
     <title>메인</title>
 </head>
 <body>

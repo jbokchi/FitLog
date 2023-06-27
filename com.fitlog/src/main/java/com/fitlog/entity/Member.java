@@ -24,25 +24,25 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="m_num")
-	private Long mnum;
+	private Long num;
 	@Column(name="m_email", unique = true)
-	private String memail;
+	private String email;
 	@Column(name="m_password")
-	private String mpassword;
+	private String password;
 	@Column(name="m_nicknm")
-	private String mnicknm;
+	private String nicknm;
 	@Column(name="m_proimg")
-	private String mproimg;
+	private String proimg;
 	
 	public static Member createMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
-		member.setMemail(memberDto.getMemail());
+		member.setEmail(memberDto.getEmail());
 		
-		String password = passwordEncoder.encode(memberDto.getMpassword());
-		member.setMpassword(password);
+		String password = passwordEncoder.encode(memberDto.getPassword());
+		member.setPassword(password);
 		
-		member.setMnicknm(memberDto.getMnicknm());
-		member.setMproimg(memberDto.getMproimg());
+		member.setNicknm(memberDto.getNicknm());
+		member.setProimg(memberDto.getProimg());
 		
 		return member;
 	}
