@@ -21,8 +21,10 @@ public class MemberDto {
 	@Length(min=8, max=16, message="비밀번호는 8~16글자로 입력하세요.")
 	private String password;
 	@NotEmpty(message="닉네임은 필수 입력값입니다.")
+	@Length(min=2, max=8, message="닉네임은 2~8글자로 입력하세요.")
 	private String nicknm;
 	private String proimg;
+	
 	//private Integer mcnum;
 	//private Integer mknum;
 }

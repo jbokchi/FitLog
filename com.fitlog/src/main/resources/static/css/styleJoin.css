@@ -172,3 +172,7 @@ table{
 #msg{
 	color: red;
 }
+
+.fieldError {
+	color: #bd2130;
+}

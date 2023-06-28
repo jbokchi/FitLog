@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fitlog.constant.Role;
 import com.fitlog.dto.MemberDto;
 import com.fitlog.entity.Member;
 
@@ -26,34 +27,45 @@ public class MemberServiceTest {
 	PasswordEncoder passwordEncoder;
 	
 	//회원정보를 담은 Member 엔티티를 만드는 메서드 작성
-	public Member createMember() {
+	public Member createNomalMember() {
 		MemberDto memberDto = new MemberDto();
-		memberDto.setMemail("green@naver.com");
-		memberDto.setMpassword("1111");
-		memberDto.setMnicknm("김그린");
+		memberDto.setEmail("green@naver.com");
+		memberDto.setPassword("1111");
+		memberDto.setNicknm("김그린");
 		
 		//엔티티에 회원정보를 저장하고 반환
-		return Member.createMember(memberDto, passwordEncoder);
+		return Member.createNormalMember(memberDto, passwordEncoder);
+	}
+	
+	//회원정보를 담은 Member 엔티티를 만드는 메서드 작성
+	public Member createInstructorMember() {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setEmail("blue@naver.com");
+		memberDto.setPassword("1111");
+		memberDto.setNicknm("나강사");
+		
+		//엔티티에 회원정보를 저장하고 반환
+		return Member.createInstructorMember(memberDto, passwordEncoder);
 	}
 	
 	@Test
 	@DisplayName("회원가입 테스트")
 	public void saveMemberTest() {
-		Member member = createMember(); //회원정보가 저장된 member 객체(entity)를 생성
+		Member member = createNomalMember(); //회원정보가 저장된 member 객체(entity)를 생성
 		Member savedMember = memberService.saveMember(member); //DB에 저장(저장된 entity를 반환)
 		
 		//회원정보를 저장하기 위해 요청한 값과 실제 저장된 값을 비교
 					//요청값(기댓값)		  //실제 저장된 값
-		assertEquals(member.getMemail(), savedMember.getMemail());
-		assertEquals(member.getMpassword(), savedMember.getMpassword());
-		assertEquals(member.getMnicknm(), savedMember.getMnicknm());
+		assertEquals(member.getEmail(), savedMember.getEmail());
+		assertEquals(member.getPassword(), savedMember.getPassword());
+		assertEquals(member.getNicknm(), savedMember.getNicknm());
 	}
 	
 	@Test
 	@DisplayName("중복회원 가입 테스트")
 	public void saveDuplicateMemberTest() {
-		Member member1 = createMember();
-		Member member2 = createMember();
+		Member member1 = createNomalMember();
+		Member member2 = createNomalMember();
 		memberService.saveMember(member1);
 		
 		try {
@@ -69,5 +81,21 @@ public class MemberServiceTest {
 			//예외 처리 메세지가 같으면 true
 			assertEquals("이미 가입된 회원입니다.", e.getMessage());
 		}
+	}
+	
+	@Test
+	@DisplayName("일반회원/강사 테스트")
+	public void saveTypeTest() {
+		Member normal = createNomalMember();
+		Member instructor = createInstructorMember();
+		Member savedNormal = memberService.saveMember(normal);
+		Member savedInstructor = memberService.saveMember(instructor);
+		
+		System.out.println(savedNormal.getRole());
+		System.out.println(savedInstructor.getRole());
+		
+		
+		assertEquals(Role.NORMAL, savedNormal.getRole());
+		assertEquals(Role.INSTRUCTOR, savedInstructor.getRole());
 	}
 }

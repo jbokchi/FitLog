@@ -32,8 +32,8 @@ a{
     margin-bottom: 20px;
 }
 .logoImg{
-    width: 96px;
-    height: 96px;
+    width: 180px;
+    /* height: 120px; */
     padding-top: 7px;
     margin-left: 4px;
 }

@@ -2,6 +2,8 @@ package com.fitlog.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.fitlog.constant.Role;
 import com.fitlog.dto.MemberDto;
 
 import lombok.Getter;
@@ -34,7 +37,10 @@ public class Member {
 	@Column(name="m_proimg")
 	private String proimg;
 	
-	public static Member createMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
+	public static Member createNormalMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
 		member.setEmail(memberDto.getEmail());
 		
@@ -44,6 +50,21 @@ public class Member {
 		member.setNicknm(memberDto.getNicknm());
 		member.setProimg(memberDto.getProimg());
 		
+		member.setRole(Role.NORMAL);
+		return member;
+	}
+	
+	public static Member createInstructorMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
+		Member member = new Member();
+		member.setEmail(memberDto.getEmail());
+		
+		String password = passwordEncoder.encode(memberDto.getPassword());
+		member.setPassword(password);
+		
+		member.setNicknm(memberDto.getNicknm());
+		member.setProimg(memberDto.getProimg());
+		
+		member.setRole(Role.INSTRUCTOR);
 		return member;
 	}
 }

@@ -36,7 +36,8 @@ public class MemberController {
 	}
 	
 	@GetMapping("/instructor/join")
-	public String insturctorForm() {
+	public String insturctorForm(Model model) {
+		model.addAttribute("memberDto", new MemberDto());
 		return "member/join";
 	}
 	
@@ -51,17 +52,44 @@ public class MemberController {
 		}
 		
 		try {
-			Member member = Member.createMember(memberDto, passwordEncoder);
+			Member member = Member.createNormalMember(memberDto, passwordEncoder);
 			memberService.saveMember(member);
 		} catch(IllegalStateException e){
 			model.addAttribute("errorMessage", e.getMessage());
-			System.out.println("에러");
+			return "member/join";
+		}
+		return "redirect:/";
+		
+		
+	}
+	
+	
+	@PostMapping("/instructor/join")
+	public String InstructorJoin(@Valid MemberDto memberDto, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "member/join";
+		}
+		
+		try {
+			Member member = Member.createInstructorMember(memberDto, passwordEncoder);
+			memberService.saveMember(member);
+		} catch(IllegalStateException e){
+			model.addAttribute("errorMessage", e.getMessage());
 			return "member/join";
 		}
 		return "redirect:/";
 		
 	}
-	
 
+	//로그인 호출
+	@GetMapping("/login")
+	public String loinMember() {
+		return "/member/login";
+	}
 	
+	//로그아웃 호출
+	@GetMapping("/logout")
+	public String logout() {
+		return "member/logout";
+	}
 }

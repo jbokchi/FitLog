@@ -21,6 +21,9 @@ img{
 a{
     text-decoration: none;
 }
+p{
+	margin-bottom: 0;
+}
 .wrap{
     width: 100%;
     min-width: 1240px;
@@ -87,10 +90,14 @@ a{
     border-bottom: solid 1px#FCB83F;
     margin-bottom: 8px;
 }
+.logTitle{
+	margin-bottom: 4px;
+}
 .tag{
     color: royalblue;
     font-size: 11px;
-    margin-bottom: 8px;
+    line-height: 1.5;
+    margin-bottom: 8px;         
 }
 .info{
     display: flex;
