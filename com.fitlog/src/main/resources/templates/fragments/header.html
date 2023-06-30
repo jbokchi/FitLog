@@ -12,10 +12,11 @@
 	   	<div class="hRight">
 	    	<div class="gnb">
 	        	<ul>
-	        		<li><a href="" class="gnbMenu">내 스케줄</a></li>
-	            	<li><a href="" class="gnbMenu">오늘 운동 완료</a></li>
-	                <li><a href="" class="gnbMenu">게시판</a></li>
-	                <li><a href="/member/login" class="login">로그인/회원가입</a></li>
+	        		<li sec:authorize="hasAnyAuthority('ROLE_NORMAL')"><a href="/scheduler/tickets" class="gnbMenu">내 스케줄</a></li>
+	            	<li sec:authorize="isAnonymous()"><a href="" class="gnbMenu">오늘 운동 완료</a></li>
+	                <li sec:authorize="isAnonymous()"><a href="" class="gnbMenu">게시판</a></li>
+	                <li sec:authorize="isAnonymous()"><a href="/member/login" class="login">로그인/회원가입</a></li>
+	                <li sec:authorize="isAuthenticated()"><a href="/member/logout" class="logout">로그아웃</a>
 	            </ul>
 			</div>
 		</div>

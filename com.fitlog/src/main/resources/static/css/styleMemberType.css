@@ -52,5 +52,7 @@ a{
 .typeBtn:hover{
     background-color: #51c0ff;
     color: #fff;
-
+}
+.divType>a:hover{
+	text-decoration: none;
 }

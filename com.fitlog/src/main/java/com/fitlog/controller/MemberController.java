@@ -58,11 +58,10 @@ public class MemberController {
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/join";
 		}
-		return "redirect:/";
+		return "member/login";
 		
 		
 	}
-	
 	
 	@PostMapping("/instructor/join")
 	public String InstructorJoin(@Valid MemberDto memberDto, BindingResult bindingResult, Model model) {
@@ -77,19 +76,29 @@ public class MemberController {
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/join";
 		}
-		return "redirect:/";
+		return "member/login";
 		
 	}
 
 	//로그인 호출
 	@GetMapping("/login")
-	public String loinMember() {
+	public String loginForm() {
 		return "/member/login";
 	}
 	
 	//로그아웃 호출
 	@GetMapping("/logout")
-	public String logout() {
+	public String logoutForm() {
 		return "member/logout";
+	}
+	
+	@PostMapping("/login")
+	public String loginMember() {
+		return "redirect:/";
+	}
+	
+	@PostMapping("/logout")
+	public String logoutMember() {
+		return "redirect:/";
 	}
 }

@@ -69,4 +69,5 @@ a{
 }
 .gnb a:hover{
 	color: #51c0ff;
+	text-decoration: none;
 }
