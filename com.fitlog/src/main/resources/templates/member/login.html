@@ -1,61 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styleLogin.css">
+    <link rel="stylesheet" th:href="@{/css/styleLogin.css}">
     <title>로그인</title>
 </head>
 <body>
-    <div class="header">
-        <div class="headerIn">
-            <div class="logoImg">
-            	<a href="/index.html">
-                	<img src="/img/logo.png" alt="핏로그로고">
-                </a>
-            </div>
-            <!-- <h1 class="title">Fit Log</h1>  -->   
-        </div><!--.headerIn-->
-    </div><!--.header-->
-    <div class="container">
-        <form action="" method="post" onsubmit="">  
-            <table>
-            	<tr>
-            		<td id="msg">
-						<i class="fa fa-exclamation-circle"></i>            
-            		</td>
-            	</tr>
-                <tr>
-                    <td class="inputInfo">
-                        <input type="email" id="m_email" class="loginEmail" name="m_email" placeholder="이메일">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="inputInfo">
-                        <input type="password" id="m_pw" class="loginPw" name="m_pw"placeholder="비밀번호">
-                        <input type="hidden" class="toURL">                        
-                    </td>
-                </tr>
-                <tr>
-                	<td>
-                		<label><input type="checkbox" name="rememberId"> 아이디 기억</label> |
-                	</td>
-                </tr>
-                <tr>
-                    <td class="tdBtn1">
-                        <button class="loginBtn">로그인</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdBtn2">
-                        <button type="button" class="searchEmailBtn helpBtn">아이디 찾기</button>
-                        <button type="button" class="searchPwBtn helpBtn">비밀번호 찾기</button>
-                        <button type="button" class="joinBtn helpBtn"><a href="/member/type">회원가입</a></button>
-                    </td>        
-                </tr>       
-            </table>
-        </form>
-    </div>
-
+	<th:block th:replace="fragments/header::header"></th:block>
+	<th:block layout:fragment="content">
+	    <div class="containHeader">
+	        <div class="containHeaderIn">
+	            <div class="containLogoImg">
+	            	<a href="/index.html">
+	                	<img src="/img/logo.png" alt="핏로그로고">
+	                </a>
+	            </div>
+	            <!-- <h1 class="title">Fit Log</h1>  -->   
+	        </div><!--.headerIn-->
+	    </div><!--.header-->
+	    <div class="container">
+	        <form action="/member/login" method="post" role="form">  
+	            <table>
+	                <tr>
+	                    <td class="inputInfo">
+	                        <input type="email" id="m_email" class="loginEmail" name="email" placeholder="이메일">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="inputInfo">
+	                        <input type="password" id="m_pw" class="loginPw" name="password" placeholder="비밀번호">
+	                        <input type="hidden" class="toURL">                        
+	                    </td>
+	                </tr>
+	                <tr>
+	               	<td>
+	                		<label><input type="checkbox" name="rememberId"> 아이디 기억</label>
+	                	</td>
+	                </tr>
+	                <tr>
+	                    <td class="tdBtn1">
+	                    	<p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
+	                        <button type="submit" class="loginBtn">로그인</button>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdBtn2">
+	                        <button type="button" class="searchEmailBtn helpBtn">아이디 찾기</button>
+	                        <button type="button" class="searchPwBtn helpBtn">비밀번호 찾기</button>
+	                        <button type="button" class="joinBtn helpBtn"><a href="/member/type">회원가입</a></button>
+	                    </td>        
+	                </tr>
+	                <!-- 스프링 시큐리티를 사용할 때는 CRSF를 방어하기 위해
+	                	모든 post 방식의 데이터를 전송하기 위해서는 csrf 토큰 값이 있어야 한다. -->
+	                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+	            </table>
+	        </form>
+	    </div>
+	</th:block>
 </body>
 </html>

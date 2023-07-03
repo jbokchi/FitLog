@@ -27,7 +27,7 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="m_num")
-	private Long num;
+	private Long memberNum;
 	@Column(name="m_email", unique = true)
 	private String email;
 	@Column(name="m_password")
@@ -39,7 +39,7 @@ public class Member {
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+		
 	public static Member createNormalMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
 		Member member = new Member();
 		member.setEmail(memberDto.getEmail());

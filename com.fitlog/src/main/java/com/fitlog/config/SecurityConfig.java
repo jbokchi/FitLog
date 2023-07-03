@@ -42,9 +42,9 @@ public class SecurityConfig {
 		.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
 		.mvcMatchers("/", "/member/**", "/today/**", "/board/**").permitAll()
 		//normal으로 시작하는 경로는 해당 계정이 일반회원일 때만 접근하도록 설정
-		.mvcMatchers("/schedule/**").hasRole("NORMAL")
+		.mvcMatchers("/scheduler/**").hasRole("NORMAL")
 		//normal으로 시작하는 경로는 해당 계정이 강사일 때만 접근하도록 설정
-		.mvcMatchers("/schedule/**").hasRole("INSTRUCTOR")
+		.mvcMatchers("/scheduler/**").hasRole("INSTRUCTOR")
 		//나머지는 모두 다 인증을 요구
 		.anyRequest().authenticated();
 		

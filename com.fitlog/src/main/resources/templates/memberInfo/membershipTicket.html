@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styleMembershipTicket.css">
+    <link rel="stylesheet" th:href="@{/css/styleMembershipTicket.css}">
     <title>회원권상태</title>
 </head>
 <body>
+	<th:block th:replace="fragments/header::header"></th:block>
     <div class="wrap">
         <div class="title">
             <h1>회원권 상태</h1>

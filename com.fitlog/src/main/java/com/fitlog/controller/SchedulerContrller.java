@@ -16,6 +16,6 @@ public class SchedulerContrller {
 
 	@GetMapping("/tickets")
 	public String selectTicketList(){
-		return "/scheduler/selectTicket";
+		return "scheduler/selectTicket";
 	}
 }

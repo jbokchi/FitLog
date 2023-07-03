@@ -18,26 +18,29 @@ a{
 .wrap{
     width: 100%;
     min-width: 1240px;
+
 }
-.header{
+.containHeader{
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
-.headerIn{
+.containHeaderIn{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 120px;
     margin-bottom: 20px;
 }
-.logoImg{
+.containLogoImg{
     width: 180px;
     /* height: 120px; */
     padding-top: 7px;
-    margin-left: 4px;
+    
+    margin-left: auto;
+    margin-right: auto;
 }
-.logoImg img{
+.containLogoImg img{
     width: 100%;
 
 }
@@ -74,7 +77,6 @@ table{
     font-size: 18px;
     line-height: 1.5;
     padding-left: 12px;
-    /* background-color: antiquewhite; */
     border-top: none;
     border-left: none;
     border-right: none;
@@ -98,6 +100,9 @@ table{
     background-color: #fff;
     cursor: pointer;
 }
+.loginBtn:focus{
+	outline:none;
+}
 .helpBtn{
     width: 120px;
     color: #666;
@@ -109,10 +114,16 @@ table{
     border-bottom: none;
     cursor: pointer;
 }
+.helpBtn a{
+	color: #666;
+	text-decoration : none;
+}
 .searchEmailBtn, .searchPwBtn{
     border-right: 1px solid #666;
 }
 .joinBtn{
     border-right: none ;
 }
-
+.error {
+	color: #bd2130;
+}

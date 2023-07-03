@@ -83,9 +83,14 @@ public class MemberController {
 	//로그인 호출
 	@GetMapping("/login")
 	public String loginForm() {
-		return "/member/login";
+		return "member/login";
 	}
-	
+	//로그인 에러
+	@GetMapping("/login/error")
+	public String loginError(Model model) {
+		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하세요");
+		return "member/login";
+	}
 	//로그아웃 호출
 	@GetMapping("/logout")
 	public String logoutForm() {

@@ -4,10 +4,11 @@
       layout:decorate="~{layouts/layout1}">
 <head>
 
-    <link rel="stylesheet" href="/css/styleJoin.css">
+    <link rel="stylesheet" th:href="@{/css/styleJoin.css}">
     <title>회원가입</title>
 </head>
 <body>
+	<th:block th:replace="fragments/header::header"></th:block>
 	<th:block layout:fragment="content">
 	    <div class="container">
 	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)">
@@ -88,7 +89,7 @@
     			fieldError.innerText="비밀번호가 일치하지 않습니다.";
     			submit = false;
     		} else {
-    			fieldError.innerText="비밀번호가 일치하지 합니다.";
+    			fieldError.innerText="비밀번호가 일치합니다.";
     			submit = true;
     		}
     		
