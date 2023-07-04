@@ -9,13 +9,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fitlog.dto.TicketDto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Table(name="ticket")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
 @ToString
 public class Ticket {
@@ -30,7 +35,7 @@ public class Ticket {
 
 	@ManyToOne
 	@JoinColumn(name="m_num")
-	private Member normalMember;
+	private Member member;
 	
 	@Column(name="tk_name")
 	private String ticketName;
@@ -38,6 +43,12 @@ public class Ticket {
 	private Integer ticketCount;
 	@Column(name="tk_period")
 	private Integer ticketPeriod;
+	
+	public Ticket(TicketDto ticket) {
+		this.ticketName = ticket.getTicketName();
+		this.ticketCount = ticket.getTicketCount();
+		this.ticketPeriod = ticket.getTicketPeriod();
+	}
 
 	
 }	
