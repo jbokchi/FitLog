@@ -19,15 +19,34 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class TicketService {
 
-	private final MemberRepository memberRepository;
-	private final TicketRepository ticketRepository;
-	
-	public List<TicketDto> getTicketList(String email){
-		
-		List<TicketDto> ticketDto = new ArrayList<>();
-		
-		Member member = memberRepository.findByEmail(email);
-//		List<Ticket> tickets = ticketRepository.
-		
-	}
+//	private final MemberRepository memberRepository;
+//	private final TicketRepository ticketRepository;
+//	
+//	public List<TicketDto> getTicketList(String email){
+//		
+//		List<TicketDto> ticketDtoList = new ArrayList<>();
+//		
+//		//현재 로그인한 회원의 회원권(ticket)을 조회함
+//		Member member = memberRepository.findByEmail(email);
+//		List<Ticket> tickets = ticketRepository.findByMemberNum(member.getMemberNum());
+//		
+//		if(tickets.isEmpty()) {
+//			return ticketDtoList;
+//		}
+//		
+//		for(Ticket ticket : tickets) {
+//			TicketDto ticketDto = TicketDto.builder()
+//					.ticketNum(ticket.getTicketNum())
+//					.ticketName(ticket.getTicketName())
+//					.ticketCount(ticket.getTicketCount())
+//					.ticketPeriod(ticket.getTicketPeriod())
+//					.memberNum(ticket.getMember().getMemberNum())
+//					.build();
+//			ticketDtoList.add(ticketDto);
+//					
+//		}
+//		
+//		return ticketDtoList;
+//		
+//	}
 }
