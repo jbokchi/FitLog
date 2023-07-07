@@ -1,5 +1,7 @@
 package com.fitlog.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fitlog.dto.TicketDto;
 
@@ -43,6 +47,20 @@ public class Ticket {
 	private Integer ticketCount;
 	@Column(name="tk_period")
 	private Integer ticketPeriod;
+	
+	@Column(name="tk_startDateAt")
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
+	@Column(name="tk_endDateAt")
+	@Temporal(TemporalType.DATE)
+	private Date endDate;
+	
+	public Ticket(TicketDto ticket, Member member) {
+		this.ticketName = ticket.getTicketName();
+		this.ticketCount = ticket.getTicketCount();
+		this.ticketPeriod = ticket.getTicketPeriod();
+		this.member = member;
+	}
 	
 	public Ticket(TicketDto ticket) {
 		this.ticketName = ticket.getTicketName();

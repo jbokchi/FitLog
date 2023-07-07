@@ -23,11 +23,13 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 		
 		return queryFactory
 				.select(new QTicketDto(
-						ticket.ticketNum,
-						ticket.ticketName,
-						ticket.ticketCount,
-						ticket.ticketPeriod,
-						member.memberNum)
+							ticket.ticketNum,
+							ticket.ticketName,
+							ticket.ticketCount,
+							ticket.ticketPeriod,
+							member.memberNum,
+							ticket.startDate,
+							ticket.endDate)
 						)
 				.from(ticket)
 				.join(ticket.member, member)

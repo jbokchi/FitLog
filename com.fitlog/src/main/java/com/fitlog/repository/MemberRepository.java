@@ -7,4 +7,6 @@ import com.fitlog.entity.Member;
 public interface MemberRepository extends JpaRepository<Member, Long>{
 
 	Member findByEmail(String Email);
+	
+	Member findByMemberNum(String MemberNum);
 }

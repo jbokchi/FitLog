@@ -21,17 +21,18 @@ a{
     min-width: 1240px;
 }
 .title{
-    display: none;
-    width: 1200px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 26px;
-    line-height: 1.5;
-    text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 62px;
 }
-.container{
-    display: none;
+.title>h1{
+	font-size: 36px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+}
+.container{   
     width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -52,8 +53,12 @@ a{
     margin-bottom: 32px;
 }
 .ticketName{
+	margin-bottom: 16px;
+}
+.ticketName h3{
     font-size: 18px;
     line-height: 1.5;
+    font-weight: bold;
 }
 .ticketDetail{
     padding-left: 16px;
@@ -79,13 +84,14 @@ a{
     color: #fff;
 }
 .noTicket{
-    /* display: hidden; */
-    width: 1200px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 26px;
-    line-height: 1.5;
-    text-align: center;
     margin-bottom: 32px;
-    
+}
+.noTicket>h1{
+	font-size: 36px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
 }

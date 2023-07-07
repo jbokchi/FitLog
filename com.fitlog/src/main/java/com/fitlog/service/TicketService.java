@@ -23,17 +23,17 @@ public class TicketService {
 	private final TicketRepository ticketRepository;
 	
 	public List<TicketDto> getTicketList(String email){
-		
-		List<TicketDto> ticketDtoList = new ArrayList<>();
+				
+		List<TicketDto> emptyTicket = new ArrayList<TicketDto>();
 		
 		//현재 로그인한 회원의 회원권(ticket)을 조회함
 		Member member = memberRepository.findByEmail(email);
-		List<TicketDto> ticketsDtoList = ticketRepository.findTicketDtoList(member.getMemberNum());
+		List<TicketDto> ticketDtoList = ticketRepository.findTicketDtoList(member.getMemberNum());
 		
-		if(ticketsDtoList.isEmpty()) {
-			return ticketDtoList;
+		if(ticketDtoList.isEmpty()) {
+			return emptyTicket;
 		}
-					
+							
 		return ticketDtoList;
 		
 	}

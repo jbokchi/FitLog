@@ -10,28 +10,29 @@
 	<th:block th:replace="fragments/header::header"></th:block>
 	<th:block layout:fragment="content">
 	    <div class="wrap">
-	        <div class="title">
-	            <h1>사용 가능한 이용권</h1>
-	        </div>
-	        <div class="container">
-	            <div class="centerList">
+	        
+	        <div class="container" th:if="${!#lists.isEmpty(ticketDtoList)}" >
+	            <div class="title">
+	            	<h1>사용 가능한 이용권</h1>
+	        	</div>
+	            <div class="centerList" th:each="ticket : ${ticketDtoList}">
 	                <div class="centerName">
 	                    <h2>OO필라테스</h2>
 	                </div>
 	                <ul>
 	                    <li class="ticket">
 	                        <div class="ticketName">
-	                            <h3>50회 이용권</h3>
+	                            <h3 th:text="${ticket.ticketName}"></h3>
 	                        </div>
 	                        <div class="ticketDetail">
 	                            <p>- 기간 : 2023.02.01 ~ 2023.08.01</p>
-	                            <p>- 잔여횟수 : 32/50</p>
+	                            <p>- 잔여횟수 : <span th:text="${ticket.ticketCount}"></span>회</p>
 	                        </div>
 	                        <button class="reserveBtn">예약</button>
 	                    </li>
 	                </ul>
 	            </div>
-	            <div class="centerList">
+<!-- 	            <div class="centerList">
 	                <div class="centerName">
 	                    <h2>OO 헬스</h2>
 	                </div>
@@ -57,9 +58,9 @@
 	                        </div>
 	                    </li>
 	                </ul>
-	            </div>
+	            </div> -->
 	        </div>
-	        <div class="noTicket">
+	        <div class="noTicket" th:if="${#lists.isEmpty(ticketDtoList)}">
 	            <h1>사용가능한 이용권이 없습니다.</h1>
 	        </div>
 	    </div>

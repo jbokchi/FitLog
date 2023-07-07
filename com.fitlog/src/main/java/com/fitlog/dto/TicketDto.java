@@ -1,9 +1,9 @@
 package com.fitlog.dto;
 
-import com.fitlog.entity.Ticket;
+import java.util.Date;
+
 import com.querydsl.core.annotations.QueryProjection;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,12 +24,21 @@ public class TicketDto {
 	
 	private Long memberNum;
 
+	private Date startDate;
+	
+	private Date endDate;
+
 	@QueryProjection
-	public TicketDto(Long ticketNum, String ticketName, Integer ticketCount, Integer ticketPeriod, Long memberNum) {
+	public TicketDto(Long ticketNum, String ticketName, Integer ticketCount, Integer ticketPeriod, Long memberNum,
+			Date startDate, Date endDate) {
+		super();
 		this.ticketNum = ticketNum;
 		this.ticketName = ticketName;
 		this.ticketCount = ticketCount;
 		this.ticketPeriod = ticketPeriod;
 		this.memberNum = memberNum;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
+	
 }

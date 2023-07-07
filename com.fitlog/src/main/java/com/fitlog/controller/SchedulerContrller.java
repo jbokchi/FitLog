@@ -21,14 +21,14 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/scheduler")
 public class SchedulerContrller {
 
-//	private final TicketService ticketService;
-//	
-//	@GetMapping("/tickets")
-//	public String selectTicketList(Principal principal, Model model){
-//		
-//		List<TicketDto> ticketDtoList = ticketService.getTicketList(principal.getName());
-//		
-//		model.addAttribute("ticketDtoList", ticketDtoList);
-//		return "scheduler/selectTicket";
-//	}
+	private final TicketService ticketService;
+	
+	@GetMapping("/tickets")
+	public String selectTicketList(Principal principal, Model model){
+		
+		List<TicketDto> ticketDtoList = ticketService.getTicketList(principal.getName());
+		
+		model.addAttribute("ticketDtoList", ticketDtoList);
+		return "scheduler/selectTicket";
+	}
 }

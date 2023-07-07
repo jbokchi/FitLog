@@ -14,6 +14,7 @@ import com.fitlog.dto.MemberDto;
 import com.fitlog.dto.TicketDto;
 import com.fitlog.entity.Member;
 import com.fitlog.entity.Ticket;
+import com.fitlog.repository.MemberRepository;
 import com.fitlog.repository.TicketRepository;
 
 @SpringBootTest
@@ -24,6 +25,9 @@ public class TicketServiceTest {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	MemberRepository memberRepository;
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -66,9 +70,17 @@ public class TicketServiceTest {
 		ticketDto2.setTicketCount(30);
 		ticketDto2.setTicketPeriod(90);
 		
+		System.out.println("ticketDto1 : " + ticketDto1);
+		System.out.println("ticketDto2 : " + ticketDto2);
+		
+		Member hasTicketMember = memberRepository.findByEmail(savedMember.getEmail());
+		
 		//엔티티 생성
-		Ticket ticket1 = new Ticket(ticketDto1);
-		Ticket ticket2 = new Ticket(ticketDto2);
+		Ticket ticket1 = new Ticket(ticketDto1, hasTicketMember);
+		Ticket ticket2 = new Ticket(ticketDto2, hasTicketMember);
+		
+		System.out.println("ticket1 : " + ticket1);
+		System.out.println("ticket2 : " + ticket2);
 		
 		//DB 저장
 		Ticket savedTicket1 = ticketRepository.save(ticket1);
