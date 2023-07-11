@@ -26,6 +26,11 @@ public class CenterService {
 		List<Center> centerList = centerRepository.findAll();
 		List<CenterDto> centerDtoList = new ArrayList<>();
 		
+		
+		if(centerList.isEmpty()) {
+			return centerDtoList;
+		}
+		
 		for(Center center: centerList) {
 			CenterDto centerDto = CenterDto.of(center);
 			centerDtoList.add(centerDto);

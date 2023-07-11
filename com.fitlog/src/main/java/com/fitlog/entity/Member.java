@@ -53,16 +53,16 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	private List<Ticket> tickets = new ArrayList<>();
 	
-	@ManyToOne
-	@JoinColumn(name="c_num")
-	private Center center;
+	@OneToMany(mappedBy = "member")
+	private List<Register> registerList = new ArrayList<>();
 	
-	public Member(MemberDto memberDto, Role role, Center center, PasswordEncoder passwordEncoder) {
+	//1. 멤버생성
+	public Member(MemberDto memberDto, Role role,PasswordEncoder passwordEncoder) {
 		this.email = memberDto.getEmail();
 		this.password = passwordEncoder.encode(memberDto.getPassword());
 		this.nicknm = memberDto.getNicknm();
 		this.role = role;
-		this.center = center;
 	}
-	
+
+		
 }

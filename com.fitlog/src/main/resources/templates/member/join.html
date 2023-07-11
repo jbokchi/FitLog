@@ -56,7 +56,25 @@
 	                    </td>
 	                </tr>
 					<tr>
-						<td class="tdSelect"><label for="c_num">소속센터</label></td>
+						<td class="tdSelect"><label for="c_num">소속센터1</label></td>
+						<td>
+							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
+								<option value="" selected>--선택--</option>
+								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdSelect"><label for="c_num">소속센터2</label></td>
+						<td>
+							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
+								<option value="" selected>--선택--</option>
+								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdSelect"><label for="c_num">소속센터3</label></td>
 						<td>
 							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
 								<option value="" selected>--선택--</option>

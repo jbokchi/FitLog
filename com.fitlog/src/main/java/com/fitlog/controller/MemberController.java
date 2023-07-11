@@ -16,6 +16,7 @@ import com.fitlog.dto.CenterDto;
 import com.fitlog.dto.MemberDto;
 import com.fitlog.entity.Center;
 import com.fitlog.entity.Member;
+import com.fitlog.entity.Register;
 import com.fitlog.service.CenterService;
 import com.fitlog.service.MemberService;
 
@@ -65,16 +66,31 @@ public class MemberController {
 			return "member/join";
 		}
 		
+		Member savedMember = new Member();
+		
 		try {
 			Member member = memberService.createNormalMember(memberDto);
-			memberService.saveMember(member);
+			savedMember = memberService.saveMember(member);
+			
 		} catch(IllegalStateException e){
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/join";
 		}
+		
+		if(memberDto.getCenterNum().isEmpty()) {
+			return "member/login";
+		}
+		
+		try {
+			List<Register> registerList = memberService.createRegister(memberDto, savedMember);
+			memberService.saveRegister(registerList);
+		}catch(Exception e){
+			model.addAttribute("errorMessage", e.getMessage());
+			return "member/join";
+		}
+
 		return "member/login";
-		
-		
+
 	}
 	
 	@PostMapping("/instructor/join")

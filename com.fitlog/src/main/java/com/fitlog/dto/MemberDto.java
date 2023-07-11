@@ -1,5 +1,7 @@
 package com.fitlog.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -9,11 +11,13 @@ import org.hibernate.validator.constraints.Length;
 import com.fitlog.entity.Center;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter
 @ToString
+@NoArgsConstructor
 public class MemberDto {
 	
 	@NotBlank(message="이메일은 필수 입력값입니다.")
@@ -27,7 +31,17 @@ public class MemberDto {
 	private String nicknm;
 	private String proimg;
 	
-	private Long centerNum;
-	
+	private List<Long> centerNum;
 
+	public MemberDto(String email, String password, String nicknm, String proimg, List<Long> centerNum) {
+		this.email = email;
+		this.password = password;
+		this.nicknm = nicknm;
+		this.proimg = proimg;
+		this.centerNum = centerNum;
+	}
+	
+	
+	
+	
 }

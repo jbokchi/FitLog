@@ -1,5 +1,8 @@
 package com.fitlog.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,12 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fitlog.constant.Role;
-import com.fitlog.dto.CenterDto;
 import com.fitlog.dto.MemberDto;
 import com.fitlog.entity.Center;
 import com.fitlog.entity.Member;
+import com.fitlog.entity.Register;
 import com.fitlog.repository.CenterRepository;
 import com.fitlog.repository.MemberRepository;
+import com.fitlog.repository.RegisterRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor //빈을 주입
 public class MemberService implements UserDetailsService{
 
+	private final RegisterRepository registerRepository;
 	private final CenterRepository centerRepository;
 	private final MemberRepository memberRepository;
 	private final PasswordEncoder passwordEncoder;
@@ -63,19 +68,45 @@ public class MemberService implements UserDetailsService{
 	//일반회원가입
 	public Member createNormalMember(MemberDto memberDto) {
 		
-		Center center = centerRepository.findByCenterNum(memberDto.getCenterNum());
-		Member member = new Member(memberDto, Role.NORMAL, center, passwordEncoder);
-		
+		Member member = new Member(memberDto, Role.NORMAL, passwordEncoder);
+
 		return member;
 	}
+	
 	
 	//강사회원가입
 	public Member createInstructorMember(MemberDto memberDto) {
 		
-		Center center = centerRepository.findByCenterNum(memberDto.getCenterNum());
-		Member member = new Member(memberDto, Role.INSTRUCTOR, center, passwordEncoder);
+		Member member = new Member(memberDto, Role.INSTRUCTOR, passwordEncoder);
 		
 		return member;
 	}
+	
+	//레지스터 엔티티 리스트 생성
+	public List<Register> createRegister(MemberDto memberDto, Member member) {
+		
+
+		List<Register> registerList = new ArrayList<>();
+		
+		//멤버와 센터 저장
+		for(int i=0; i<memberDto.getCenterNum().size(); i++) {
+			Center center  = centerRepository.findByCenterNum(memberDto.getCenterNum().get(i));
+									
+			Register register = new Register(member, center);
+			registerList.add(register);
+			
+		}
+		
+		return registerList;
+	}
+	
+	//레지스터 저장
+	public void saveRegister(List<Register> registerList) {
+		
+		for(Register register : registerList) {
+			registerRepository.save(register);
+		}
+	}
+	
 	
 }
