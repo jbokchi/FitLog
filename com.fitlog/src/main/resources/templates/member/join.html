@@ -30,14 +30,14 @@
 	                <tr>
 	                    <td class="tdText"><label th:for="m_email">이메일</label></td>
 	                    <td>
-	                    	<input type="email" th:field="*{email}" id="m_email" class="inputInfo" name="m_email">
+	                    	<input type="email" th:field="*{email}" id="m_email" class="inputInfo">
 	                		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
 	                	</td>
 	                </tr>
 	                <tr>
 	                    <td class="tdText"><label for="m_pw">비밀번호</label></td>
 	                    <td>
-	                        <input type="password" th:field="*{password}" id="m_pw" class="inputInfo" name="m_pw" onblur="checkPw()">
+	                        <input type="password" th:field="*{password}" id="m_pw" class="inputInfo"onblur="checkPw()">
 	                    	<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
 	                    </td>
 	                </tr>
@@ -51,11 +51,19 @@
 	                <tr>
 	                    <td class="tdText"><label for="m_nickname">닉네임</label></td>
 	                    <td>
-	                    	<input type="text" th:field="*{nicknm}" id="m_nicknm" class="inputInfo" name="m_nicknm" onblur="checkNickname()">
+	                    	<input type="text" th:field="*{nicknm}" id="m_nicknm" class="inputInfo" onblur="checkNickname()">
 	                    	<p th:if="${#fields.hasErrors('nicknm')}" th:errors="*{nicknm}" class="fieldError">Incorrect data</p>
 	                    </td>
 	                </tr>
-					
+					<tr>
+						<td class="tdSelect"><label for="c_num">소속센터</label></td>
+						<td>
+							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
+								<option value="" selected>--선택--</option>
+								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
+							</select>
+						</td>
+					</tr>
 	                <tr>
 	                    <td colspan="2">
 	                        <button type="submit" class="joinBtn">회원가입</button>

@@ -4,10 +4,16 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fitlog.constant.Role;
+import com.fitlog.dto.CenterDto;
+import com.fitlog.dto.MemberDto;
+import com.fitlog.entity.Center;
 import com.fitlog.entity.Member;
+import com.fitlog.repository.CenterRepository;
 import com.fitlog.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +23,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor //빈을 주입
 public class MemberService implements UserDetailsService{
 
+	private final CenterRepository centerRepository;
 	private final MemberRepository memberRepository;
+	private final PasswordEncoder passwordEncoder;
 	
 	public Member saveMember(Member member) {
 		validateDuplicateMember(member); //이메일 중복 확인 메서드 호출
@@ -50,6 +58,24 @@ public class MemberService implements UserDetailsService{
 				.password(member.getPassword())
 				.roles(member.getRole().toString())
 				.build();
+	}
+	
+	//일반회원가입
+	public Member createNormalMember(MemberDto memberDto) {
+		
+		Center center = centerRepository.findByCenterNum(memberDto.getCenterNum());
+		Member member = new Member(memberDto, Role.NORMAL, center, passwordEncoder);
+		
+		return member;
+	}
+	
+	//강사회원가입
+	public Member createInstructorMember(MemberDto memberDto) {
+		
+		Center center = centerRepository.findByCenterNum(memberDto.getCenterNum());
+		Member member = new Member(memberDto, Role.INSTRUCTOR, center, passwordEncoder);
+		
+		return member;
 	}
 	
 }

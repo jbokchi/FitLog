@@ -10,15 +10,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fitlog.constant.Role;
+import com.fitlog.dto.CenterDto;
 import com.fitlog.dto.MemberDto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +30,7 @@ import lombok.ToString;
 @Table(name="member")
 @Getter @Setter
 @ToString
+@NoArgsConstructor
 public class Member {
 
 	@Id
@@ -48,31 +53,16 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	private List<Ticket> tickets = new ArrayList<>();
 	
-	public static Member createNormalMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
-		Member member = new Member();
-		member.setEmail(memberDto.getEmail());
-		
-		String password = passwordEncoder.encode(memberDto.getPassword());
-		member.setPassword(password);
-		
-		member.setNicknm(memberDto.getNicknm());
-		member.setProimg(memberDto.getProimg());
-		
-		member.setRole(Role.NORMAL);
-		return member;
+	@ManyToOne
+	@JoinColumn(name="c_num")
+	private Center center;
+	
+	public Member(MemberDto memberDto, Role role, Center center, PasswordEncoder passwordEncoder) {
+		this.email = memberDto.getEmail();
+		this.password = passwordEncoder.encode(memberDto.getPassword());
+		this.nicknm = memberDto.getNicknm();
+		this.role = role;
+		this.center = center;
 	}
 	
-	public static Member createInstructorMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
-		Member member = new Member();
-		member.setEmail(memberDto.getEmail());
-		
-		String password = passwordEncoder.encode(memberDto.getPassword());
-		member.setPassword(password);
-		
-		member.setNicknm(memberDto.getNicknm());
-		member.setProimg(memberDto.getProimg());
-		
-		member.setRole(Role.INSTRUCTOR);
-		return member;
-	}
 }

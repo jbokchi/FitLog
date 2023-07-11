@@ -2,6 +2,9 @@ package com.fitlog.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.Getter;
@@ -14,28 +17,22 @@ import lombok.ToString;
 @NoArgsConstructor
 public class TicketDto {
 	
-	private Long ticketNum;	
-	
+	@NotEmpty
 	private String ticketName;
-	
+	@NotBlank
 	private Integer ticketCount;
-	
-	private Integer ticketPeriod;
-	
+	@NotBlank
 	private Long memberNum;
-
+	@NotBlank	
 	private Date startDate;
-	
+	@NotBlank
 	private Date endDate;
 
 	@QueryProjection
-	public TicketDto(Long ticketNum, String ticketName, Integer ticketCount, Integer ticketPeriod, Long memberNum,
+	public TicketDto(String ticketName, Integer ticketCount, Long memberNum,
 			Date startDate, Date endDate) {
-		super();
-		this.ticketNum = ticketNum;
 		this.ticketName = ticketName;
 		this.ticketCount = ticketCount;
-		this.ticketPeriod = ticketPeriod;
 		this.memberNum = memberNum;
 		this.startDate = startDate;
 		this.endDate = endDate;

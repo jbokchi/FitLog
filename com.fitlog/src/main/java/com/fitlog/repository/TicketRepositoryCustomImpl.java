@@ -23,10 +23,8 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 		
 		return queryFactory
 				.select(new QTicketDto(
-							ticket.ticketNum,
 							ticket.ticketName,
 							ticket.ticketCount,
-							ticket.ticketPeriod,
 							member.memberNum,
 							ticket.startDate,
 							ticket.endDate)
@@ -35,7 +33,6 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 				.join(ticket.member, member)
 				.where(
 						ticket.ticketCount.gt(0),
-						ticket.ticketPeriod.gt(0),
 						member.memberNum.eq(memberNum)
 						
 						)

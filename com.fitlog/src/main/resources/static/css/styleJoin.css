@@ -103,8 +103,16 @@ table{
     font-size: 20px;
     line-height: 1.5;
 }
-.tdText label{
+.tdText>label{
     width: 140px;
+}
+
+.tdSelect{
+	width: 140px;
+    height: 80px;
+    text-align: left;
+    font-size: 20px;
+    line-height: 1.5;
 }
 .inputInfo{
     width: 300px;

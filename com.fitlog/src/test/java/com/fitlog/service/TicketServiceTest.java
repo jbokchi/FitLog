@@ -62,13 +62,11 @@ public class TicketServiceTest {
 		ticketDto1.setMemberNum(savedMember.getMemberNum());
 		ticketDto1.setTicketName("PT 10회 이용권");
 		ticketDto1.setTicketCount(0);
-		ticketDto1.setTicketPeriod(10);
 		
 		TicketDto ticketDto2 = new TicketDto();
 		ticketDto2.setMemberNum(savedMember.getMemberNum());
 		ticketDto2.setTicketName("여름맞이 EVENT");
 		ticketDto2.setTicketCount(30);
-		ticketDto2.setTicketPeriod(90);
 		
 		System.out.println("ticketDto1 : " + ticketDto1);
 		System.out.println("ticketDto2 : " + ticketDto2);

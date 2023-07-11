@@ -34,9 +34,6 @@ public class Ticket {
 	@Column(name="tk_num")
 	private Long ticketNum;
 	
-//	@Column(name="tk_cnum")
-//	private Long centerNum;
-
 	@ManyToOne
 	@JoinColumn(name="m_num")
 	private Member member;
@@ -45,27 +42,26 @@ public class Ticket {
 	private String ticketName;
 	@Column(name="tk_count")
 	private Integer ticketCount;
-	@Column(name="tk_period")
-	private Integer ticketPeriod;
 	
-	@Column(name="tk_startDateAt")
+	@Column(name="tk_startdate")
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
-	@Column(name="tk_endDateAt")
+	@Column(name="tk_enddate")
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+	
+	
+	
 	
 	public Ticket(TicketDto ticket, Member member) {
 		this.ticketName = ticket.getTicketName();
 		this.ticketCount = ticket.getTicketCount();
-		this.ticketPeriod = ticket.getTicketPeriod();
 		this.member = member;
 	}
 	
 	public Ticket(TicketDto ticket) {
 		this.ticketName = ticket.getTicketName();
 		this.ticketCount = ticket.getTicketCount();
-		this.ticketPeriod = ticket.getTicketPeriod();
 	}
 
 	

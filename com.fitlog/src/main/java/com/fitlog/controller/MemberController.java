@@ -1,5 +1,7 @@
 package com.fitlog.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fitlog.dto.CenterDto;
 import com.fitlog.dto.MemberDto;
+import com.fitlog.entity.Center;
 import com.fitlog.entity.Member;
+import com.fitlog.service.CenterService;
 import com.fitlog.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +26,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/member")
 public class MemberController {
 
+	private final CenterService centerService;
 	private final MemberService memberService;
-	private final PasswordEncoder passwordEncoder;
 	
 	@GetMapping("/type")
 	public String MemberType() {
@@ -31,13 +36,22 @@ public class MemberController {
 	
 	@GetMapping("/normal/join")
 	public String normalForm(Model model) {
+		List<CenterDto> centerDtoList = centerService.getCenterList();
+		
 		model.addAttribute("memberDto", new MemberDto());
+		model.addAttribute("centerDtoList", centerDtoList);
+		
 		return "member/join";
 	}
 	
 	@GetMapping("/instructor/join")
 	public String insturctorForm(Model model) {
+		
+		List<CenterDto> centerDtoList = centerService.getCenterList();
+		
 		model.addAttribute("memberDto", new MemberDto());
+		model.addAttribute("centerDtoList", centerDtoList);
+		
 		return "member/join";
 	}
 	
@@ -52,7 +66,7 @@ public class MemberController {
 		}
 		
 		try {
-			Member member = Member.createNormalMember(memberDto, passwordEncoder);
+			Member member = memberService.createNormalMember(memberDto);
 			memberService.saveMember(member);
 		} catch(IllegalStateException e){
 			model.addAttribute("errorMessage", e.getMessage());
@@ -64,13 +78,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/instructor/join")
-	public String InstructorJoin(@Valid MemberDto memberDto, BindingResult bindingResult, Model model) {
+	public String InstructorJoin(@Valid MemberDto memberDto, CenterDto centerDto, String centerName, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "member/join";
 		}
 		
 		try {
-			Member member = Member.createInstructorMember(memberDto, passwordEncoder);
+			Member member = memberService.createInstructorMember(memberDto);
 			memberService.saveMember(member);
 		} catch(IllegalStateException e){
 			model.addAttribute("errorMessage", e.getMessage());

@@ -6,6 +6,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fitlog.entity.Center;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,6 +27,7 @@ public class MemberDto {
 	private String nicknm;
 	private String proimg;
 	
-	//private Integer mcnum;
-	//private Integer mknum;
+	private Long centerNum;
+	
+
 }

@@ -48,7 +48,6 @@ public class TicketTest {
 		TicketDto ticketDto = new TicketDto();
 		ticketDto.setTicketName("여름맞이 30회 event");
 		ticketDto.setTicketCount(30);
-		ticketDto.setTicketPeriod(90);
 		
 		Ticket ticket = new Ticket(ticketDto);
 		
@@ -59,7 +58,6 @@ public class TicketTest {
 		TicketDto ticketDto = new TicketDto();
 		ticketDto.setTicketName("pt 10회 이용권");
 		ticketDto.setTicketCount(10);
-		ticketDto.setTicketPeriod(60);
 		
 		Ticket ticket = new Ticket(ticketDto);
 		

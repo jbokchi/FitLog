@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fitlog.constant.Role;
 import com.fitlog.dto.MemberDto;
 import com.fitlog.entity.Member;
+import com.fitlog.repository.CenterRepository;
 
 @SpringBootTest
 @Transactional
