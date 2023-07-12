@@ -36,8 +36,6 @@ public class CenterService {
 			centerDtoList.add(centerDto);
 		}
 		
-		System.out.println("centerDtoList : " + centerDtoList);
-		
 		return centerDtoList;
 	}
 }

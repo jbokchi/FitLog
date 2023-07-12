@@ -11,8 +11,8 @@
 	<th:block th:replace="fragments/header::header"></th:block>
 	<th:block layout:fragment="content">
 	    <div class="container">
-	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)">
-	            <table>
+	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)" id="joinForm">
+	            <table id="joinTable">
 	                <tr>
 	                    <td class="tdImg" colspan="2">
 	                        <div class="profileImg">
@@ -56,27 +56,32 @@
 	                    </td>
 	                </tr>
 					<tr>
-						<td class="tdSelect"><label for="c_num">소속센터1</label></td>
+						<td class="tdSelect"><label for="c_num1">소속센터</label></td>
 						<td>
-							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
+							<select th:field="*{centerNum}" id="c_num1" class="selectInfo">
+								<option value="" selected>--선택--</option>
+								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
+							</select>
+						</td>
+					</tr>
+					<!-- <tr id="trAddCenterBtn">
+                   		<td colspan="2" class="">
+                        	<div class="addCenterBtn" onclick="addCenterBtnClick(1)">소속학원 추가</div>
+                    	</td>
+                	</tr> -->
+					<tr>
+						<td class="tdSelect"><label for="c_num2">소속센터</label></td>
+						<td>
+							<select th:field="*{centerNum}" id="c_num2" class="selectInfo" onchange="selectCenterAlert()">
 								<option value="" selected>--선택--</option>
 								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td class="tdSelect"><label for="c_num">소속센터2</label></td>
+						<td class="tdSelect"><label for="c_num3">소속센터</label></td>
 						<td>
-							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
-								<option value="" selected>--선택--</option>
-								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="tdSelect"><label for="c_num">소속센터3</label></td>
-						<td>
-							<select th:field="*{centerNum}" id="c_num" class="selectInfo">
+							<select th:field="*{centerNum}" id="c_num3" class="selectInfo">
 								<option value="" selected>--선택--</option>
 								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
 							</select>
@@ -103,11 +108,11 @@
 				}
 			})
 			
-    	let pw = document.getElementById("m_pw");
-    	let pw2 = document.getElementById("m_pw2");
-    	let fieldError = document.getElementById("fieldError");
-    	
-		let submit = true;
+	    	let pw = document.getElementById("m_pw");
+	    	let pw2 = document.getElementById("m_pw2");
+	    	let fieldError = document.getElementById("fieldError");
+	    	
+			let submit = true;
 		
     	//비밀번호 확인
     	function checkPw2(){
@@ -133,7 +138,10 @@
     			return false;
     		}
     	} 
+    	
 		</script>
+		
+		
 	</th:block>
 </body>
 </html>

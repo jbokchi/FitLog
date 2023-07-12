@@ -90,6 +90,10 @@ public class MemberService implements UserDetailsService{
 		
 		//멤버와 센터 저장
 		for(int i=0; i<memberDto.getCenterNum().size(); i++) {
+			if(memberDto.getCenterNum().get(i) == null) {
+				break;
+			}
+			
 			Center center  = centerRepository.findByCenterNum(memberDto.getCenterNum().get(i));
 									
 			Register register = new Register(member, center);

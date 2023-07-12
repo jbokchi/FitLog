@@ -26,7 +26,8 @@ public class CenterDto {
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	
-	public CenterDto(String centerName, String centerAddr, Long memberNum) {
+	public CenterDto(Long centerNum, String centerName, String centerAddr) {
+		this.centerNum = centerNum;
 		this.centerName = centerName;
 		this.centerAddr = centerAddr; 
 	}
