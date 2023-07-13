@@ -56,21 +56,15 @@
 	                    </td>
 	                </tr>
 					<tr>
-						<td class="tdSelect"><label for="c_num1">소속센터</label></td>
+						<td class="tdSelect"><label for="c_num1">소속센터1</label></td>
 						<td>
-							<select th:field="*{centerNum}" id="c_num1" class="selectInfo">
+							<select th:field="*{centerNum}" id="c_num1" class="selectInfo" onchange="selectCenterInit()">
 								<option value="" selected>--선택--</option>
 								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
 							</select>
 						</td>
-					</tr>
-					<!-- <tr id="trAddCenterBtn">
-                   		<td colspan="2" class="">
-                        	<div class="addCenterBtn" onclick="addCenterBtnClick(1)">소속학원 추가</div>
-                    	</td>
-                	</tr> -->
 					<tr>
-						<td class="tdSelect"><label for="c_num2">소속센터</label></td>
+						<td class="tdSelect"><label for="c_num2">소속센터2</label></td>
 						<td>
 							<select th:field="*{centerNum}" id="c_num2" class="selectInfo" onchange="selectCenterAlert()">
 								<option value="" selected>--선택--</option>
@@ -79,9 +73,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="tdSelect"><label for="c_num3">소속센터</label></td>
+						<td class="tdSelect"><label for="c_num3">소속센터3</label></td>
 						<td>
-							<select th:field="*{centerNum}" id="c_num3" class="selectInfo">
+							<select th:field="*{centerNum}" id="c_num3" class="selectInfo" onchange="selectCenterAlert()">
 								<option value="" selected>--선택--</option>
 								<option th:each="centerDtoList : ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>			
 							</select>
@@ -114,31 +108,87 @@
 	    	
 			let submit = true;
 		
-    	//비밀번호 확인
-    	function checkPw2(){
-    		if(pw.value != pw2.value){
-    			fieldError.innerText="비밀번호가 일치하지 않습니다.";
-    			submit = false;
-    		} else {
-    			fieldError.innerText="비밀번호가 일치합니다.";
-    			submit = true;
-    		}
+	    	//비밀번호 확인
+	    	function checkPw2(){
+	    		if(pw.value != pw2.value){
+	    			fieldError.innerText="비밀번호가 일치하지 않습니다.";
+	    			submit = false;
+	    		} else {
+	    			fieldError.innerText="비밀번호가 일치합니다.";
+	    			submit = true;
+	    		}
+	    		
+	    		return submit;
+	    	}
+	    	
+	    	function formCheck(joinForm){
+	    		if (submit){
+	      			return true;
+	    		} else{
+	    			pw.value = null;
+	    			pw2.value = null;
+	    			fieldError.innerText="";
+	    			alert("비밀번호가 일치하지 않습니다.")
+	    			return false;
+	    		}
+	    	} 
+	    	
+	    	
     		
-    		return submit;
-    	}
-    	
-    	function formCheck(joinForm){
-    		if (submit){
-      			return true;
-    		} else{
-    			pw.value = null;
-    			pw2.value = null;
-    			fieldError.innerText="";
-    			alert("비밀번호가 일치하지 않습니다.")
-    			return false;
-    		}
-    	} 
-    	
+	    	function selectCenterAlert(){
+	    		
+	    		let center1_value = $("#c_num1 option:selected").val();
+	    		let center2_value = $("#c_num2 option:selected").val();
+	    		let center3_value = $("#c_num3 option:selected").val();
+	    		
+	    		// 두번째 select-option 부터 선택시
+	        	if (center1_value == ''){	
+	        		alert("첫번째 센터부터 선택하세요");
+	        		$("#c_num2").find('option:first').prop('selected', true);
+	        	
+	        	// 세번째 select-option 부터 선택시
+	        	}else if(center1_value != '' && center2_value == ''){
+	        		alert("두번째 센터부터 선택하세요");
+	        		$("#c_num3").find('option:first').prop('selected', true);
+	        	}
+	        	
+           		
+	        	
+	        	if(center1_value != ''){
+	        		// 첫번재 센터와 두번째 센터가 같을 시
+		        	if(center1_value == center2_value){
+		        		alert("첫번재 센터와 같은 센터를 선택하셨습니다. 다시 선택해 주세요");
+		        		$("#c_num2").find('option:first').prop('selected', true);
+		        	}
+	        	}
+	        	
+	        	if(center1_value != '' && center2_value != ''){
+	        		
+	        		// 두번재 센터와 세번째 센터가 같을 시
+		        	if(center2_value == center3_value){
+		        		alert("두번째 센터와 같은 센터를 선택하셨습니다. 다시 선택해 주세요");
+		        		$("#c_num3").find('option:first').prop('selected', true);
+		        	}
+	        		
+		        	// 첫번재 센터와 세번째 센터가 같을 시
+		        	if(center1_value == center3_value){
+		        		alert("첫번째 센터와 같은 센터를 선택하셨습니다. 다시 선택해 주세요");
+		        		$("#c_num3").find('option:first').prop('selected', true);
+		        	}
+	        	}
+	    	}
+	        	function selectCenterInit(){
+	        		let center1_value = $("#c_num1 option:selected").val();
+		    		let center2_value = $("#c_num2 option:selected").val();
+		    		let center3_value = $("#c_num3 option:selected").val();
+	        		 
+	        		if(center1_value == ''){
+	        			$("#c_num2").find('option:first').prop('selected', true);
+	        			$("#c_num3").find('option:first').prop('selected', true);
+	        		}
+	        	}
+	    	
+	    	
 		</script>
 		
 		
