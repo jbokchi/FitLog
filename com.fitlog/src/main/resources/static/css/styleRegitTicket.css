@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+.container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.title{
+    font-size: 32px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top : 32px;
+    margin-bottom: 32px;
+}
+.centerName{
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+table{
+    width: 1200px;
+    border-collapse: collapse;
+}
+.searchArea{
+    border-top: 2px solid  #51c0ff;
+    border-bottom: 2px solid  #51c0ff;
+}
+.tdSearch{
+    padding: 12px;
+}
+.divSearch{
+    display: flex;
+    align-items: center;
+}
+.selectCategory{
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    margin-right: 8px;
+    border: 1px solid #51c0ff;
+    border-radius: 8px;
+}
+.inputKeyword{
+    width: 240px;
+    height: 37.5px;
+    border: 1px solid #51c0ff;
+    border-radius: 8px 0 0 8px;
+}
+.searchBtn{
+    width:60px;
+    height: 40px; 
+    border: 1px solid #51c0ff;
+    border-radius: 0 8px 8px 0;
+    background-color: #51c0ff;
+    color: #fff;
+    font-size: 18px;
+}
+.regitArea{
+    height: 96px;
+    border-bottom : 1px solid #51c0ff;
+}
+.inputBox>p, .inputBox>label{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.inputTicket{
+    height: 30px;
+    border: 1px solid #51c0ff;
+    border-radius: 8px;
+}
+#ticketName{
+    width: 280px;
+}
+#ticketCount{
+    width: 100px;
+}
+#memberEmail{
+    width: 280px;
+}
+.regitBtn{
+    width:60px;
+    height: 40px; 
+    border: 1px solid #51c0ff;
+    border-radius: 8px;
+    background-color: #51c0ff;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 20px; 
+}
+.listArea{
+    border-bottom : 1px solid #51c0ff;
+}
+.ticketContent{
+    height: 60px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 8px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styleRegitTicket.css}">
+    <title>회원권 관리</title>
+</head>
+<body>
+	<th:block th:replace="fragments/header::header"></th:block>
+	<th:block layout:fragment="content">
+    <div class="wrap">
+        <div class="container">
+            <h1 class="title">회원권 관리</h1>
+            <h2 class="centerName">OO필라테스</h2>
+            <form action="">
+                <div class="content">
+                    <table >
+                        <colgroup>
+                            <col width="5%"/>
+                            <col width="25%"/>
+                            <col width="10%"/>
+                            <col width="15%"/>
+                            <col width="15%"/>
+                            <col width="25%"/>
+                            <col width="5%"/>
+                        </colgroup>
+                        <tr class="searchArea">
+                            <td class="tdSearch" colspan="7">
+                                <div class="divSearch">
+                                    <select name="" id="category" class="selectCategory">
+                                        <option value="">회원권명</option>
+                                        <option value="">이메일</option>
+                                    </select>
+                                    <input type="text" class="inputKeyword">
+                                    <button class="searchBtn">검색</button>
+                                </div>    
+                            </td>
+                        </tr><!--.searchArea-->
+                        <tr class="regitArea">
+                            <td class="inputBox">
+                                <p id="number">NO</p>
+                            </td>
+                            <td class="inputBox">
+                                <label for="ticketName">회원권명</label><br>
+                                <input type="text" id="ticketName" class="inputTicket">
+                            </td>
+                            <td class="inputBox">
+                                <label for="ticketCount">횟수</label><br>
+                                <input type="text" id="ticketCount" class="inputTicket">
+                            </td>
+                            <td class="inputBox">
+                                <label for="ticketSdate">시작일</label><br>
+                            <input type="text" id="ticketSdate" class="inputTicket">
+                            </td>
+                            <td class="inputBox">
+                                <label for="ticketEdate">종료일</label><br>
+                                <input type="text" id="ticketEdate" class="inputTicket">
+                            </td>
+                            <td class="inputBox">
+                                <label for="ticketmemberEmail">회원 이메일</label><br>
+                                <input type="text" id="memberEmail" class="inputTicket">
+                            </td>
+                            <td>
+                                <button class="regitBtn">등록</button>
+                            </td>
+                        </tr>
+                        <tr class="listArea">
+                            <td class="ticketContent">
+                                <div>1</div>
+                            </td>
+                            <td class="ticketContent">
+                                <div>7월 EVENT</div>
+                            </td>
+                            <td class="ticketContent">
+                                <div>30</div>
+                            </td>
+                            <td class="ticketContent">
+                                <div>2023.07.14</div>
+                            </td>
+                            <td class="ticketContent">
+                                <div>2023.10.14</div>
+                            </td>
+                            <td class="ticketContent">
+                                <div>green@naver.com</div>
+                            </td>
+                        </tr><!--listArea-->
+                    </table><!--.regitArea-->
+                </div><!--content-->
+            </form>
+        </div><!--.container-->
+    </div>
+    </th:block>
+</body>
+</html>
