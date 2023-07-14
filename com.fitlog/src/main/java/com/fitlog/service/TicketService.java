@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fitlog.dto.TicketDto;
 import com.fitlog.entity.Member;
+import com.fitlog.repository.CenterRepository;
 import com.fitlog.repository.MemberRepository;
 import com.fitlog.repository.TicketRepository;
 import com.fitlog.repository.TicketRepositoryCustom;
@@ -21,8 +22,9 @@ public class TicketService {
 
 	private final MemberRepository memberRepository;
 	private final TicketRepository ticketRepository;
+	private final CenterRepository centerRepository;
 	
-	public List<TicketDto> getTicketList(String email){
+	public List<TicketDto> getTicketListByMember(String email){
 				
 		List<TicketDto> emptyTicket = new ArrayList<TicketDto>();
 		
@@ -35,6 +37,16 @@ public class TicketService {
 		}
 							
 		return ticketDtoList;
+		
+	}
+	
+	public List<TicketDto> getTicketByCenter(String email){
+		
+		List<TicketDto> emptyTicket = new ArrayList<>();
+		
+		Member member = memberRepository.findByEmail(email);
+		//Center center = centerRepository.findByCenterNum(null)
+		
 		
 	}
 }

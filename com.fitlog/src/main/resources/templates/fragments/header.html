@@ -13,6 +13,7 @@
 	    	<div class="gnb">
 	        	<ul>
 	        		<li sec:authorize="hasAnyAuthority('ROLE_NORMAL')"><a href="/scheduler/tickets" class="gnbMenu">내 스케줄</a></li>
+	            	<li sec:authorize="hasAnyAuthority('ROLE_INSTRUCTOR')"><a href="/manage/tickets" class='gnbMenu'>회원권 관리</a>
 	            	<li sec:authorize="permitAll"><a href="" class="gnbMenu">오늘 운동 완료</a></li>
 	                <li sec:authorize="permitAll"><a href="" class="gnbMenu">게시판</a></li>
 	                <li sec:authorize="isAnonymous()"><a href="/member/login" class="gnbMenu login">로그인/회원가입</a></li>

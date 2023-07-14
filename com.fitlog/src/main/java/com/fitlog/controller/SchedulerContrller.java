@@ -26,7 +26,7 @@ public class SchedulerContrller {
 	@GetMapping("/tickets")
 	public String selectTicketList(Principal principal, Model model){
 		
-		List<TicketDto> ticketDtoList = ticketService.getTicketList(principal.getName());
+		List<TicketDto> ticketDtoList = ticketService.getTicketListByMember(principal.getName());
 		
 		model.addAttribute("ticketDtoList", ticketDtoList);
 		return "scheduler/selectTicket";

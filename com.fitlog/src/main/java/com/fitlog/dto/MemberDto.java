@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fitlog.entity.Center;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,6 @@ import lombok.ToString;
 
 @Getter @Setter
 @ToString
-@NoArgsConstructor
 public class MemberDto {
 	
 	@NotBlank(message="이메일은 필수 입력값입니다.")
@@ -33,6 +33,9 @@ public class MemberDto {
 	
 	private List<Long> centerNum;
 
+	public MemberDto() {};
+	
+	@Builder
 	public MemberDto(String email, String password, String nicknm, String proimg, List<Long> centerNum) {
 		this.email = email;
 		this.password = password;

@@ -10,19 +10,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fitlog.constant.Role;
-import com.fitlog.dto.CenterDto;
 import com.fitlog.dto.MemberDto;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -30,7 +27,6 @@ import lombok.ToString;
 @Table(name="member")
 @Getter @Setter
 @ToString
-@NoArgsConstructor
 public class Member {
 
 	@Id
@@ -56,7 +52,10 @@ public class Member {
 	@OneToMany(mappedBy = "member")
 	private List<Register> registerList = new ArrayList<>();
 	
+	public Member() {};
+	
 	//1. 멤버생성
+	@Builder
 	public Member(MemberDto memberDto, Role role,PasswordEncoder passwordEncoder) {
 		this.email = memberDto.getEmail();
 		this.password = passwordEncoder.encode(memberDto.getPassword());
@@ -64,5 +63,7 @@ public class Member {
 		this.role = role;
 	}
 
+	
+	
 		
 }

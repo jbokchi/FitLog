@@ -17,5 +17,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>,
 										QuerydslPredicateExecutor<Ticket>,
 										TicketRepositoryCustom{
 	
-
+	List<TicketDto> findByCenterNum(Long CenterNum);
 }

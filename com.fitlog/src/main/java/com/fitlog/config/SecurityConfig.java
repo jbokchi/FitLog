@@ -44,10 +44,9 @@ public class SecurityConfig {
 		//normal으로 시작하는 경로는 해당 계정이 일반회원일 때만 접근하도록 설정
 		.mvcMatchers("/scheduler/**").hasRole("NORMAL")
 		//normal으로 시작하는 경로는 해당 계정이 강사일 때만 접근하도록 설정
-		.mvcMatchers("/scheduler/**").hasRole("INSTRUCTOR")
+		.mvcMatchers("/manage/**").hasRole("INSTRUCTOR")
 		//나머지는 모두 다 인증을 요구
 		.anyRequest().authenticated();
-		
 		//인증되지 않는 사용자가 리소스에 접근할 때 수행되는 핸들러 목록
 		http.exceptionHandling()
 			.authenticationEntryPoint(new CustomAuthenticationEntryPoint());

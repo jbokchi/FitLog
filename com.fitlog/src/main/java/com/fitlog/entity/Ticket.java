@@ -51,7 +51,9 @@ public class Ticket {
 	private Date endDate;
 	
 	
-	
+	@ManyToOne
+	@JoinColumn(name="c_num")
+	private Center center;
 	
 	public Ticket(TicketDto ticket, Member member) {
 		this.ticketName = ticket.getTicketName();

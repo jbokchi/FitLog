@@ -22,12 +22,13 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 		QMember member = QMember.member;
 		
 		return queryFactory
-				.select(new QTicketDto(
-							ticket.ticketName,
-							ticket.ticketCount,
-							member.memberNum,
-							ticket.startDate,
-							ticket.endDate)
+				.select(
+						new QTicketDto(
+								ticket.ticketName,
+								ticket.ticketCount,
+								member.memberNum,
+								ticket.startDate,
+								ticket.endDate)
 						)
 				.from(ticket)
 				.join(ticket.member, member)

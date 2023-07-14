@@ -39,9 +39,10 @@ public class MemberController {
 	public String normalForm(Model model) {
 		List<CenterDto> centerDtoList = centerService.getCenterList();
 		
+			
 		model.addAttribute("memberDto", new MemberDto());
 		model.addAttribute("centerDtoList", centerDtoList);
-		
+		model.addAttribute("type", "normal");
 		return "member/join";
 	}
 	
@@ -52,6 +53,8 @@ public class MemberController {
 		
 		model.addAttribute("memberDto", new MemberDto());
 		model.addAttribute("centerDtoList", centerDtoList);
+		model.addAttribute("type", "instructor");
+		
 		
 		return "member/join";
 	}
@@ -70,6 +73,7 @@ public class MemberController {
 		
 		try {
 			Member member = memberService.createNormalMember(memberDto);
+			System.out.println("member : " + member);
 			savedMember = memberService.saveMember(member);
 			
 		} catch(IllegalStateException e){
@@ -99,14 +103,33 @@ public class MemberController {
 			return "member/join";
 		}
 		
+		Member savedMember = new Member();
+		
 		try {
 			Member member = memberService.createInstructorMember(memberDto);
-			memberService.saveMember(member);
+			
+			System.out.println("member : " + member);
+			savedMember = memberService.saveMember(member);
+			
 		} catch(IllegalStateException e){
 			model.addAttribute("errorMessage", e.getMessage());
 			return "member/join";
 		}
+		
+		if(memberDto.getCenterNum().isEmpty()) {
+			return "member/login";
+		}
+		
+		try {
+			List<Register> registerList = memberService.createRegister(memberDto, savedMember);
+			memberService.saveRegister(registerList);
+		}catch(Exception e){
+			model.addAttribute("errorMessage", e.getMessage());
+			return "member/join";
+		}
+
 		return "member/login";
+
 		
 	}
 

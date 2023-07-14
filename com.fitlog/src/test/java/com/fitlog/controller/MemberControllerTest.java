@@ -1,5 +1,7 @@
 package com.fitlog.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +15,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fitlog.constant.Role;
 import com.fitlog.dto.MemberDto;
 import com.fitlog.entity.Member;
 import com.fitlog.service.MemberService;
@@ -40,7 +43,7 @@ public class MemberControllerTest {
 		memberDto.setNicknm("그린");
 		memberDto.setPassword(password);
 		
-		Member member = Member.createNormalMember(memberDto, passwordEncoder);
+		Member member = new Member(memberDto, Role.NORMAL, passwordEncoder);
 		
 		return memberService.saveMember(member);
 	}
@@ -51,7 +54,7 @@ public class MemberControllerTest {
 		memberDto.setNicknm("강사");
 		memberDto.setPassword(password);
 		
-		Member member = Member.createInstructorMember(memberDto, passwordEncoder);
+		Member member = new Member(memberDto, Role.INSTRUCTOR, passwordEncoder);
 		
 		return memberService.saveMember(member);
 	}
@@ -61,7 +64,7 @@ public class MemberControllerTest {
 	public void loginSuccessTest() throws Exception {
 		String email = "green@naver.com";
 		String password = "1111";
-		this.createInstructorMember(email, password);
+		Member test1 = this.createInstructorMember(email, password);
 		
 		//formLogin(): 로그인 폼을 기반으로 한 요청을 설정할 수 있도록 함
 		mockMvc.perform(formLogin().userParameter("email") //로그인 요청을 모방함
@@ -69,6 +72,8 @@ public class MemberControllerTest {
 				.user(email) 		//로그인 요청에 사용될 이메일
 				.password(password))//로그인 요청에 사용될 패스워드 설정
 				.andExpect(SecurityMockMvcResultMatchers.authenticated());//테스트 결과를 검증함
+		
+		assertEquals(test1.getRole(), Role.INSTRUCTOR);
 	}	
 	
 	@Test
@@ -85,5 +90,12 @@ public class MemberControllerTest {
 				.password("2222"))	//로그인 요청에 사용될 패스워드 설정
 				.andExpect(SecurityMockMvcResultMatchers.unauthenticated());//테스트 결과를 검증함
 					
+	}
+	
+	
+	@Test
+	@DisplayName("강사 로그인 테스트")
+	public void loginInstructorTest() {
+		
 	}
 }

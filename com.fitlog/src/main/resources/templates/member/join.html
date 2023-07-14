@@ -11,7 +11,7 @@
 	<th:block th:replace="fragments/header::header"></th:block>
 	<th:block layout:fragment="content">
 	    <div class="container">
-	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)" id="joinForm">
+	        <form th:action="${type} == 'normal'? '/member/normal/join' : '/member/instructor/join'"  method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)" id="joinForm">
 	            <table id="joinTable">
 	                <tr>
 	                    <td class="tdImg" colspan="2">

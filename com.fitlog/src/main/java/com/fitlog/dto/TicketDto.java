@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 import com.querydsl.core.annotations.QueryProjection;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +28,10 @@ public class TicketDto {
 	private Date startDate;
 	@NotBlank
 	private Date endDate;
+	
+	private Long centerNum;
 
+	
 	@QueryProjection
 	public TicketDto(String ticketName, Integer ticketCount, Long memberNum,
 			Date startDate, Date endDate) {
@@ -37,5 +41,20 @@ public class TicketDto {
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
+
+	@Builder
+	public TicketDto(String ticketName, Integer ticketCount, Long memberNum,
+			Date startDate, Date endDate, Long centerNum) {
+		this.ticketName = ticketName;
+		this.ticketCount = ticketCount;
+		this.memberNum = memberNum;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.centerNum = centerNum;
+	}
+	
+	
+	
+	
 	
 }

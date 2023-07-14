@@ -1,20 +1,25 @@
 package com.fitlog.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@Table(name="center")
 @Getter @Setter
 @ToString
-@NoArgsConstructor
 public class Center {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,10 +30,16 @@ public class Center {
 	@Column(name="c_addr")
 	private String centerAddr;
 			
+	@OneToMany(mappedBy="center")
+	List<Ticket> ticketList = new ArrayList<>();
+	
+	@Builder
 	public Center(Long centerNum, String centerName, String centerAddr) {
 		this.centerNum = centerNum;
 		this.centerName = centerName;
 		this.centerAddr = centerAddr;
 	}
+	
+	
 
 }
