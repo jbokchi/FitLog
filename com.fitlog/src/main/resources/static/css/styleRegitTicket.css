@@ -37,6 +37,23 @@ a{
     margin-top : 32px;
     margin-bottom: 32px;
 }
+.selectCenter{
+	width: 200px;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    margin-left: 8px;
+}
+.selectCenterBtn{
+    width:60px;
+    height: 40px; 
+    border: 1px solid #51c0ff;
+    border-radius: 8px;
+    background-color: #51c0ff;
+    color: #fff;
+    font-size: 18px;
+}
 .centerName{
     font-size: 22px;
     line-height: 1.5;

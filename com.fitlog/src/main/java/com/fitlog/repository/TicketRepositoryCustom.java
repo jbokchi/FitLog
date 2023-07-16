@@ -11,5 +11,7 @@ import com.fitlog.dto.TicketDto;
 
 public interface TicketRepositoryCustom {
 
-	List<TicketDto> findTicketDtoList(Long memberNum);
+	List<TicketDto> findMyTicketDtoList(Long memberNum);
+	
+	List<TicketDto> findCenterTicketDtoList(Long centerNum);
 }

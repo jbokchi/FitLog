@@ -33,6 +33,8 @@ public class Center {
 	@OneToMany(mappedBy="center")
 	List<Ticket> ticketList = new ArrayList<>();
 	
+	public Center(){};
+	
 	@Builder
 	public Center(Long centerNum, String centerName, String centerAddr) {
 		this.centerNum = centerNum;

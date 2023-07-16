@@ -12,7 +12,14 @@
     <div class="wrap">
         <div class="container">
             <h1 class="title">회원권 관리</h1>
-            <h2 class="centerName">OO필라테스</h2>
+            <div class="centerArea">
+				<select class="selectCenter">
+					<option value="">센터명</option>
+					<option value="">OO필라테스</option>
+				</select>
+				<button id="selectCenterBtn" class="selectCenterBtn">확인</button>			
+			</div>
+                       
             <form action="">
                 <div class="content">
                     <table >
@@ -33,7 +40,7 @@
                                         <option value="">이메일</option>
                                     </select>
                                     <input type="text" class="inputKeyword">
-                                    <button class="searchBtn">검색</button>
+                                    <button id="searchBtn" class="searchBtn">검색</button>
                                 </div>    
                             </td>
                         </tr><!--.searchArea-->
@@ -64,7 +71,7 @@
                             <td>
                                 <button class="regitBtn">등록</button>
                             </td>
-                        </tr>
+                        </tr><!--regitArea-->
                         <tr class="listArea">
                             <td class="ticketContent">
                                 <div>1</div>

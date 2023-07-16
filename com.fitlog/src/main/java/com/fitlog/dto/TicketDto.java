@@ -30,19 +30,10 @@ public class TicketDto {
 	private Date endDate;
 	
 	private Long centerNum;
-
 	
-	@QueryProjection
-	public TicketDto(String ticketName, Integer ticketCount, Long memberNum,
-			Date startDate, Date endDate) {
-		this.ticketName = ticketName;
-		this.ticketCount = ticketCount;
-		this.memberNum = memberNum;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
 
 	@Builder
+	@QueryProjection
 	public TicketDto(String ticketName, Integer ticketCount, Long memberNum,
 			Date startDate, Date endDate, Long centerNum) {
 		this.ticketName = ticketName;
@@ -52,6 +43,7 @@ public class TicketDto {
 		this.endDate = endDate;
 		this.centerNum = centerNum;
 	}
+
 	
 	
 	

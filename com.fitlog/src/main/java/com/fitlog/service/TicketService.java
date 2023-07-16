@@ -30,7 +30,7 @@ public class TicketService {
 		
 		//현재 로그인한 회원의 회원권(ticket)을 조회함
 		Member member = memberRepository.findByEmail(email);
-		List<TicketDto> ticketDtoList = ticketRepository.findTicketDtoList(member.getMemberNum());
+		List<TicketDto> ticketDtoList = ticketRepository.findMyTicketDtoList(member.getMemberNum());
 		
 		if(ticketDtoList.isEmpty()) {
 			return emptyTicket;
@@ -40,13 +40,16 @@ public class TicketService {
 		
 	}
 	
-	public List<TicketDto> getTicketByCenter(String email){
-		
-		List<TicketDto> emptyTicket = new ArrayList<>();
-		
-		Member member = memberRepository.findByEmail(email);
-		//Center center = centerRepository.findByCenterNum(null)
-		
-		
-	}
+	/*
+	 * public List<TicketDto> getTicketByCenter(String email){
+	 * 
+	 * 
+	 * List<TicketDto> emptyTicket = new ArrayList<>();
+	 * 
+	 * Member member = memberRepository.findByEmail(email); Center center =
+	 * centerRepository.findByCenterNum();
+	 * 
+	 * 
+	 * }
+	 */
 }
