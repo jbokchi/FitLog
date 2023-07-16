@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styleSelectTicket.css}">
+    <title>회원권 선택</title>
+</head>
+<body>
+	<th:block th:replace="fragments/header::header"></th:block>
+	<th:block layout:fragment="content">
+	    <div class="wrap">
+	        <div class="title">
+	            <h1>사용 가능한 이용권</h1>
+	        </div>
+	        <div class="container">
+	            <div class="centerList">
+	                <div class="centerName">
+	                    <h2>OO필라테스</h2>
+	                </div>
+	                <ul>
+	                    <li class="ticket">
+	                        <div class="ticketName">
+	                            <h3>50회 이용권</h3>
+	                        </div>
+	                        <div class="ticketDetail">
+	                            <p>- 기간 : 2023.02.01 ~ 2023.08.01</p>
+	                            <p>- 잔여횟수 : 32/50</p>
+	                        </div>
+	                        <button class="reserveBtn">예약</button>
+	                    </li>
+	                </ul>
+	            </div>
+	            <div class="centerList">
+	                <div class="centerName">
+	                    <h2>OO 헬스</h2>
+	                </div>
+	                <ul>
+	                    <li class="ticket">
+	                        <div class="ticketName">
+	                            <h3>시설자유 이용권</h3>
+	                        </div>
+	                        <div class="ticketDetail">
+	                            <p>- 기간 : 2023.02.01 ~ 2023.08.01</p>
+	                            <p>- 잔여 횟수: 무제한</p>
+	                        </div>
+	                        <button class="reserveBtn">예약</button>
+	                    </li>
+	                    <li class="ticket">
+	                        <div class="ticketName">
+	                            <h3>PT 20회 이용권</h3>
+	                        </div>
+	                        <div class="ticketDetail">
+	                            <p>- 기간 : 2023.02.01 ~ 2023.08.01</p>
+	                            <p>- 잔여 횟수: 12/20</p>
+	                            <button class="reserveBtn">예약</button>
+	                        </div>
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	        <div class="noTicket">
+	            <h1>사용가능한 이용권이 없습니다.</h1>
+	        </div>
+	    </div>
+    </th:block>
+</body>
+</html>

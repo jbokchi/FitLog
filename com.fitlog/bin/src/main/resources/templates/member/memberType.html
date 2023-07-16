@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <link th:href="@{/css/styleMemberType.css}"rel="stylesheet">  
+    <title>회원 구분</title>
+</head>
+
+<body>
+	<th:block th:replace="fragments/header::header"></th:block>
+        
+	<th:block layout:fragment="content">
+		<div class="wrap">
+			<div class="divType">
+				<a href="/member/normal/join">
+					<div id="normal" class="typeBtn">일반회원</div>
+				</a>
+				<a href="/member/instructor/join">
+					<div id="instructor" class="typeBtn">강사</div>
+				</a>
+			</div>
+		</div>
+	</th:block>
+	
+</body>
+</html>

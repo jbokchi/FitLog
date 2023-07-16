@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+.top{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.topIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.logoImg{
+    width: 96px;
+    height: 96px;
+    margin-left: 4px;
+
+}
+.logoImg img{
+    width: 100%;
+}
+.title{
+    color: #51c0ff;
+    font-size: 56px;
+    line-height: 1.5;
+    /* color: #808080; */
+    /* color: #99ecec; */
+
+}
+.container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+table{
+    width: 540x;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.tdImg{
+    position:relative;
+}
+.profileImg{
+    width: 140px;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profileImg img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.uploadImgBtn{
+    width: 156px;
+    height: 36px;
+    font-size: 18px;
+    font-weight: bold;
+    color:#fff;
+    background-color: #51c0ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    line-height: 35px;
+    margin-left: 172px;
+} 
+
+#imgUpload{
+	display: none;
+}
+
+.tdText{
+    width: 140px;
+    height: 80px;
+    text-align: left;
+    font-size: 20px;
+    line-height: 1.5;
+}
+.tdText label{
+    width: 140px;
+}
+.inputInfo{
+    width: 300px;
+    height: 56px;
+    font-size: 20px;
+    line-height: 1.5;
+    /* background-color: antiquewhite; */
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-left: 12px;
+}
+.inputInfo:focus{
+    outline: 1px solid #51c0ff;
+    border-radius: 4px;
+}
+.selectInfo{
+    width: 300px;
+    height: 56px;
+    font-size: 20px;
+    line-height: 1.5;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-left: 12px;
+}
+.selectInfo:focus{
+    outline: 1px solid #51c0ff;
+    border-radius: 4px;
+}
+.joinBtn{
+    width: 500px;
+    height: 52px;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    color: #51c0ff;
+    border: 1px solid #51c0ff;
+    background-color: #fff;
+    cursor: pointer;
+    margin-top: 36px;
+    margin-bottom: 100px;
+}
+.warning{
+    text-align: left;
+    color: red;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-left: 16px;
+}
+
+.emailOverlap{
+    width: 140px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #51c0ff;
+    border: 1px solid #51c0ff;
+    background-color: #fff;
+    margin-right: -310px;
+}
+
+#msg{
+	color: red;
+}
+
+.fieldError {
+	color: #bd2130;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+
+    <link rel="stylesheet" th:href="@{/css/styleJoin.css}">
+    <title>회원가입</title>
+</head>
+<body>
+	<th:block th:replace="fragments/header::header"></th:block>
+	<th:block layout:fragment="content">
+	    <div class="container">
+	        <form  action="/member/normal/join" method="post" role="form" enctype="multipart/form-data" th:object=${memberDto} onsubmit="return formCheck(this)">
+	            <table>
+	                <tr>
+	                    <td class="tdImg" colspan="2">
+	                        <div class="profileImg">
+	                            <img id="preview" src="/img/memberImg.png" alt="사진 미리보기">
+	                        </div>
+	                     
+	                        <div class="uploadImgBtn"> <label for="imgUpload">사진 올리기</label><input type="file" id="imgUpload" name="imageFile"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td colspan="2">
+	                        <div id="msg" class="msg"></div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label th:for="m_email">이메일</label></td>
+	                    <td>
+	                    	<input type="email" th:field="*{email}" id="m_email" class="inputInfo" name="m_email">
+	                		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+	                	</td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_pw">비밀번호</label></td>
+	                    <td>
+	                        <input type="password" th:field="*{password}" id="m_pw" class="inputInfo" name="m_pw" onblur="checkPw()">
+	                    	<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_pw2">비밀번호 확인</label></td>
+	                    <td>
+	                        <input type="password" id="m_pw2" class="inputInfo" name="m_pw2" onblur="checkPw2()">
+	                        <p id="fieldError" class="fieldError"></p>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="tdText"><label for="m_nickname">닉네임</label></td>
+	                    <td>
+	                    	<input type="text" th:field="*{nicknm}" id="m_nicknm" class="inputInfo" name="m_nicknm" onblur="checkNickname()">
+	                    	<p th:if="${#fields.hasErrors('nicknm')}" th:errors="*{nicknm}" class="fieldError">Incorrect data</p>
+	                    </td>
+	                </tr>
+					
+	                <tr>
+	                    <td colspan="2">
+	                        <button type="submit" class="joinBtn">회원가입</button>
+	                    </td>
+	                </tr>
+	            </table>
+	            
+	            <input type="hidden" th:name=${_csrf.parameterName} th:value=${_csrf.token}>
+	        </form>
+	    </div><!--container-->
+	</th:block>
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			$(document).ready(function(){
+				var errorMessage = /*[[${errorMessage}]]*/"";
+				
+				if(errorMessage != null){
+					alert(errorMessage);
+				}
+			})
+			
+    	let pw = document.getElementById("m_pw");
+    	let pw2 = document.getElementById("m_pw2");
+    	let fieldError = document.getElementById("fieldError");
+    	
+		let submit = true;
+		
+    	//비밀번호 확인
+    	function checkPw2(){
+    		if(pw.value != pw2.value){
+    			fieldError.innerText="비밀번호가 일치하지 않습니다.";
+    			submit = false;
+    		} else {
+    			fieldError.innerText="비밀번호가 일치합니다.";
+    			submit = true;
+    		}
+    		
+    		return submit;
+    	}
+    	
+    	function formCheck(joinForm){
+    		if (submit){
+      			return true;
+    		} else{
+    			pw.value = null;
+    			pw2.value = null;
+    			fieldError.innerText="";
+    			alert("비밀번호가 일치하지 않습니다.")
+    			return false;
+    		}
+    	} 
+		</script>
+	</th:block>
+</body>
+</html>

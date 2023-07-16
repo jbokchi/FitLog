@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+}
+ul, ol{
+    list-style: none;
+}
+img{
+    /* 인라인블럭요소인 img 태그를 위쪽을 기준으로 정렬하도록 설정 */
+    vertical-align: top;
+}
+a{
+    text-decoration: none;
+}
+p{
+	margin-bottom: 0;
+}
+.wrap{
+    width: 100%;
+    min-width: 1240px;
+}
+/* container */
+.divContent{
+    width: 960px;
+    margin:auto;
+}
+.today{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+.todayColumn li{
+    width: 200px;
+    box-sizing: content-box;
+    border: solid 1px #FCB83F;
+    margin-bottom: 16px;
+}
+.board ul{
+    display: flex;
+    justify-content: space-between;
+}
+.board li{
+    width: 200px;
+    box-sizing: content-box;
+    border: solid 1px #FCB83F;
+    margin-bottom: 16px;
+}
+.text{
+    padding: 8px;
+}
+.title{
+    font-size: 26px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.todayImg{
+    width:200px;
+    margin-bottom: 12px;
+}
+.todayImg img{
+    width:100%;
+    height:auto;
+}
+.boardImg{
+    width:200px;
+    height:200px;
+    margin-bottom: 12px;
+}
+.boardImg img{
+    width:100%;
+    height:auto;
+}
+.log{
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: nowrap; /* 자동 줄바꿈 방지 */
+    overflow: hidden; /* 해당 영역을 벗어나는 텍스트 숨김 */
+    text-overflow: ellipsis; /* 말줄임 적용*/
+    border-bottom: solid 1px#FCB83F;
+    margin-bottom: 8px;
+}
+.logTitle{
+	margin-bottom: 4px;
+}
+.tag{
+    color: royalblue;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 8px;         
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+}
+.prof{
+    display: flex;
+    width: 64px;
+    font-size: 11px;
+    color:steelblue;
+}
+.profImg{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+}
+.profImg img{
+    width:100%;
+}
+.countUp{
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+    color: #999;
+}
+.comments{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30px;
+}
+.like{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30px;
+}

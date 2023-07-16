@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <link th:href="@{/css/styleIndex.css}"rel="stylesheet">    
+    <title>메인</title>
+</head>
+<body>
+    <div class="wrap">
+        <div th:replace="fragments/header::header"></div>
+        
+        <div layout:fragment="content" class="content">
+	        <div class="container">
+	            <div class="divContent">
+	                <div class="title">
+	                    <h1>오늘 운동 완료</h1>
+	                </div>
+	                <div class="today">
+	                    <div class="todayColumn">
+	                        <ul>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/런닝남자.jpg}" alt="런닝하는 남자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p class="logTitle">오늘도 새벽 달리기</p>
+	                                            <p class="tag">#새벽달리기 #런닝 #오운완</p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">홍길동</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/수영남자.jpg}" alt="수영하는 남자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p class="logTitle" >접영 마스터</p>
+	                                            <p class="tag">#수영 #접영 #오운완 #버터플라이</p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">둘리</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                        </ul>                        
+	                    </div><!--todayColumn-->
+	                    <div class="todayColumn">
+	                        <ul>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/축구남자.jpg}" alt="축구하는 남자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p class="logTitle">땀난다</p>
+	                                            <p class="tag">#축구 #같이하실 #오운완 </p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">독수리</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/복싱여자.jpg}" alt="복싱하는 여자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p class="logTitle">원투원투</p>
+	                                            <p class="tag">#복싱 #boxing #오운완</p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">제니</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                        </ul>                        
+	                    </div><!--todayColumn-->
+	                    <div class="todayColumn">
+	                        <ul>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/요가 여자1.jpg}" alt="요가하는 여자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p>아침요가</p>
+	                                            <p class="tag">#요가 #나마스떼 #오운완 </p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">리사</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/필라테스남자.jpg}" alt="필라테스하는 남자">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p>코어조지기</p>
+	                                            <p class="tag">#필라테스 #코어운동 #오운완</p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">정국</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                        </ul>                        
+	                    </div><!--todayColumn-->
+	                    <div class="todayColumn">
+	                        <ul>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/헬스장여자1.jpg}" alt="헬스하는 여자1">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p>1일1운동</p>
+	                                            <p class="tag">#헬스 #상체운동 #오운완 </p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">로제</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                            <li>
+	                                <a href="#">
+	                                    <div class="todayImg">
+	                                        <img th:src="@{/img/헬스장여자2.jpg}" alt="헬스하는 여자2">
+	                                    </div>
+	                                    <div class="text">
+	                                        <div class="log">
+	                                            <p>복근은 못참지</p>
+	                                            <p class="tag">#헬스 #복근 #오운완</p>
+	                                        </div>
+	                                        <div class="info">
+	                                            <div class="prof">
+	                                                <div class="profImg">
+	                                                    <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                                </div>
+	                                                <p class="Nickname">지수</p>
+	                                            </div>
+	                                            <div class="countUp">
+	                                                <div class="comments">
+	                                                    <i class="xi-speech-o"></i>
+	                                                    <p>6</p>
+	                                                </div>
+	                                                <div class="like">
+	                                                    <i class="xi-heart-o"></i>
+	                                                    <p>12</p>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div> <!--.text-->
+	                                </a>
+	                            </li>
+	                        </ul>                        
+	                    </div><!--todayColumn-->
+	                </div><!--today-->
+	            </div><!--content-->
+	            <div class="divContent">
+	                <div class="title">
+	                    <h1>게시판</h1>
+	                </div>
+	                <div class="board">
+	                    <ul>
+	                        <li>
+	                            <a href="">
+	                                <div class="boardImg">
+	                                    <img th:src="@{/img/noimage.png}" alt="이미지 없음">
+	                                </div>
+	                                <div class="text">
+	                                    <div class="log">
+	                                        <p class="logTitle">AA짐 회원권 양도해요</p>
+	                                        <p class="tag">#헬스 #회원권양도 #AA동 </p>
+	                                    </div>
+	                                    <div class="info">
+	                                        <div class="prof">
+	                                            <div class="profImg">
+	                                                <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                            </div>
+	                                            <p class="Nickname">민지</p>
+	                                        </div>
+	                                        <div class="countUp">
+	                                            <div class="comments">
+	                                                <i class="xi-speech-o"></i>
+	                                                <p>4</p>
+	                                            </div>
+	                                            <div class="like">
+	                                                <i class="xi-heart-o"></i>
+	                                                <p>8</p>
+	                                            </div>
+	                                        </div>
+	                                    </div><!--.info-->
+	                                </div> <!--.text-->
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="">
+	                                <div class="boardImg">
+	                                    <img th:src="@{/img/noimage.png}" alt="이미지 없음">
+	                                </div>
+	                                <div class="text">
+	                                    <div class="log">
+	                                        <p class="logTitle">FF필라테스 30회 양도해요</p>
+	                                        <p class="tag">#필라테스 #회원권양도 #FF동 </p>
+	                                    </div>
+	                                    <div class="info">
+	                                        <div class="prof">
+	                                            <div class="profImg">
+	                                                <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                            </div>
+	                                            <p class="Nickname">하니</p>
+	                                        </div>
+	                                        <div class="countUp">
+	                                            <div class="comments">
+	                                                <i class="xi-speech-o"></i>
+	                                                <p>4</p>
+	                                            </div>
+	                                            <div class="like">
+	                                                <i class="xi-heart-o"></i>
+	                                                <p>8</p>
+	                                            </div>
+	                                        </div>
+	                                    </div><!--.info-->
+	                                </div> <!--.text-->
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="">
+	                                <div class="boardImg">
+	                                    <img th:src="@{/img/noimage.png}" alt="이미지 없음">
+	                                </div>
+	                                <div class="text">
+	                                    <div class="log">
+	                                        <p class="logTitle">레깅스 무료나눔~</p>
+	                                        <p class="tag">#레깅스 #무료나눔 #무나 </p>
+	                                    </div>
+	                                    <div class="info">
+	                                        <div class="prof">
+	                                            <div class="profImg">
+	                                                <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                            </div>
+	                                            <p class="Nickname">혜인</p>
+	                                        </div>
+	                                        <div class="countUp">
+	                                            <div class="comments">
+	                                                <i class="xi-speech-o"></i>
+	                                                <p>4</p>
+	                                            </div>
+	                                            <div class="like">
+	                                                <i class="xi-heart-o"></i>
+	                                                <p>8</p>
+	                                            </div>
+	                                        </div>
+	                                    </div><!--.info-->
+	                                </div> <!--.text-->
+	                            </a>
+	                        </li>
+	                        <li>
+	                            <a href="">
+	                                <div class="boardImg">
+	                                    <img th:src="@{/img/noimage.png}" alt="이미지 없음">
+	                                </div>
+	                                <div class="text">
+	                                    <div class="log">
+	                                        <p class="logTitle">DD동 헬스장 추천해주세요</p>
+	                                        <p class="tag">#헬스장 #추천 #DD동 </p>
+	                                    </div>
+	                                    <div class="info">
+	                                        <div class="prof">
+	                                            <div class="profImg">
+	                                                <img th:src="@{/img/memberImg.png}" alt="프로필이미지">
+	                                            </div>
+	                                            <p class="Nickname">다니엘</p>
+	                                        </div>
+	                                        <div class="countUp">
+	                                            <div class="comments">
+	                                                <i class="xi-speech-o"></i>
+	                                                <p>4</p>
+	                                            </div>
+	                                            <div class="like">
+	                                                <i class="xi-heart-o"></i>
+	                                                <p>8</p>
+	                                            </div>
+	                                        </div>
+	                                    </div><!--.info-->
+	                                </div> <!--.text-->
+	                            </a>
+	                        </li>
+	                        
+	                    </ul>
+	                </div>
+	            </div>
+	
+	        </div><!--.container-->
+        </div><!-- fragment="content" -->
+        
+        <div class="footer">
+
+        </div><!--footer-->
+    </div><!--.wrap-->
+</body>
+</html>

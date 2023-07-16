@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="header">
+	<div class="header">
+	    <div class="hLeft">
+			<button class="openMenuBtn"><i class="xi-bars xi-3x"></i></button>                
+            <div class="logo">
+             	<p><a href="/"><img src="/img/logo.png" alt="핏로그 로고"></a></p>
+            </div>
+	    </div>
+	   	<div class="hRight">
+	    	<div class="gnb">
+	        	<ul>
+	        		<li sec:authorize="hasAnyAuthority('ROLE_NORMAL')"><a href="/scheduler/tickets" class="gnbMenu">내 스케줄</a></li>
+	            	<li sec:authorize="permitAll"><a href="" class="gnbMenu">오늘 운동 완료</a></li>
+	                <li sec:authorize="permitAll"><a href="" class="gnbMenu">게시판</a></li>
+	                <li sec:authorize="isAnonymous()"><a href="/member/login" class="gnbMenu login">로그인/회원가입</a></li>
+	                <li sec:authorize="isAuthenticated()"><a href="/member/logout" class="gnbMenu logout">로그아웃</a>
+	            </ul>
+			</div>
+		</div>
+	</div><!--.header-->
+</th:block>
+</html>
