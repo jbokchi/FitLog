@@ -1,13 +1,13 @@
 package com.fitlog.dto;
 
-import java.util.Date;
-
 import javax.validation.constraints.NotBlank;
 
 import org.modelmapper.ModelMapper;
 
 import com.fitlog.entity.Center;
+import com.querydsl.core.annotations.QueryProjection;
 
+import groovy.transform.builder.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,6 +30,8 @@ public class RegisterDto {
 		return modelMapper.map(Center, CenterDto.class);
 	}
 
+	@Builder
+	@QueryProjection
 	public RegisterDto(Long memberNum, Long centerNum) {
 		
 		this.memberNum = memberNum;

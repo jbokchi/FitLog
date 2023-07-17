@@ -12,4 +12,6 @@ public interface CenterRepository extends JpaRepository<Center, Long>{
 	List<Center> findAll();
 	
 	Center findByCenterNum(Long centerNum);
+	
+	
 }

@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fitlog.dto.RegisterDto;
 import com.fitlog.dto.TicketDto;
 import com.fitlog.entity.Member;
 import com.fitlog.repository.CenterRepository;
 import com.fitlog.repository.MemberRepository;
+import com.fitlog.repository.RegisterRepository;
 import com.fitlog.repository.TicketRepository;
 import com.fitlog.repository.TicketRepositoryCustom;
 
@@ -23,6 +25,7 @@ public class TicketService {
 	private final MemberRepository memberRepository;
 	private final TicketRepository ticketRepository;
 	private final CenterRepository centerRepository;
+	private final RegisterRepository registerRepository;
 	
 	public List<TicketDto> getTicketListByMember(String email){
 				
@@ -40,16 +43,24 @@ public class TicketService {
 		
 	}
 	
-	/*
-	 * public List<TicketDto> getTicketByCenter(String email){
-	 * 
-	 * 
-	 * List<TicketDto> emptyTicket = new ArrayList<>();
-	 * 
-	 * Member member = memberRepository.findByEmail(email); Center center =
-	 * centerRepository.findByCenterNum();
-	 * 
-	 * 
-	 * }
-	 */
+	public List<RegisterDto> getRegisterDtoByMemberNum(String email){
+		//강사의 센터 목록 
+		 Member member = memberRepository.findByEmail(email); 
+		 List<RegisterDto> registerDtoList = registerRepository.findRegisterDtoList(member.getMemberNum());
+		 
+		 return registerDtoList;
+	}
+	
+//	 public List<TicketDto> getTicketByCenter(String email){
+//	 
+//		 //빈 회원권
+//		 List<TicketDto> emptyTicket = new ArrayList<>();
+//	  
+//		 //강사의 센터 목록 
+//		 Member member = memberRepository.findByEmail(email); 
+//		 List<RegisterDto> RegisterDtoList = registerRepository.findByMemberNum(member.getMemberNum());
+//
+//	  
+//	 }
+	 
 }

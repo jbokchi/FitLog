@@ -15,7 +15,7 @@
             <div class="centerArea">
 				<select class="selectCenter">
 					<option value="">센터명</option>
-					<option value="">OO필라테스</option>
+					<option th:each="registerDtoList: ${registerDtoList}" th:value="${registerDtoList.centerNum}" th:text="${registerDtoList.cneterName}"></option>
 				</select>
 				<button id="selectCenterBtn" class="selectCenterBtn">확인</button>			
 			</div>

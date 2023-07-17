@@ -1,9 +1,13 @@
 package com.fitlog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import com.fitlog.entity.Register;
 
-public interface RegisterRepository extends JpaRepository<Register, Long>{
+public interface RegisterRepository extends JpaRepository<Register, Long>, 
+											QuerydslPredicateExecutor<Register>,
+											RegisterRepositoryCustom{
 
+	
 }
