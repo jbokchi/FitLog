@@ -21,6 +21,8 @@ public class RegisterRepositoryCustomImpl implements RegisterRepositoryCustom{
 		this.queryFactory = new JPAQueryFactory(em);
 	}
 
+
+
 	@Override
 	public List<RegisterDto> findRegisterDtoList(Long memberNum) {
 		
@@ -33,6 +35,8 @@ public class RegisterRepositoryCustomImpl implements RegisterRepositoryCustom{
 						new QRegisterDto(
 								member.memberNum,
 								center.centerNum
+						
+								)
 						)
 				.from(register)
 				.join(register.center, center)
@@ -41,7 +45,7 @@ public class RegisterRepositoryCustomImpl implements RegisterRepositoryCustom{
 						member.memberNum.eq(memberNum)
 						)
 				.orderBy(register.registerNum.asc())
-				.fetch();	
+				.fetch();
 
 	}
 }

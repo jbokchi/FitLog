@@ -31,12 +31,14 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 		return queryFactory
 				.select(
 						new QTicketDto(
+								ticket.ticketNum,
 								ticket.ticketName,
 								ticket.ticketCount,
 								center.centerNum,
 								ticket.startDate,
 								ticket.endDate,
-								member.memberNum)
+								member.memberNum,
+								member.email)
 						)
 				.from(ticket)
 				.join(ticket.member, member)
@@ -63,12 +65,14 @@ public class TicketRepositoryCustomImpl implements TicketRepositoryCustom{
 		return queryFactory
 				.select(
 						new QTicketDto(
+								ticket.ticketNum,
 								ticket.ticketName,
 								ticket.ticketCount,
 								center.centerNum,
 								ticket.startDate,
 								ticket.endDate,
-								member.memberNum)
+								member.memberNum,
+								member.email)
 						)
 				.from(ticket)
 				.join(ticket.center, center)

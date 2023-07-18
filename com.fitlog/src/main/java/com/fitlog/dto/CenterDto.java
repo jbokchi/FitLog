@@ -19,9 +19,7 @@ public class CenterDto {
 
 	@NotBlank
 	private Long centerNum;
-	@NotEmpty
 	private String centerName;
-	@NotEmpty
 	private String centerAddr;
 	
 	private static ModelMapper modelMapper = new ModelMapper();

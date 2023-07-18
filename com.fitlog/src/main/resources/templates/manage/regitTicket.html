@@ -12,15 +12,18 @@
     <div class="wrap">
         <div class="container">
             <h1 class="title">회원권 관리</h1>
-            <div class="centerArea">
-				<select class="selectCenter">
-					<option value="">센터명</option>
-					<option th:each="registerDtoList: ${registerDtoList}" th:value="${registerDtoList.centerNum}" th:text="${registerDtoList.cneterName}"></option>
-				</select>
-				<button id="selectCenterBtn" class="selectCenterBtn">확인</button>			
-			</div>
-                       
-            <form action="">
+            <form id="centerForm" th:action='@{/manage/tickets/center}' th:object=${getCenterNum} method="post">
+	            <div class="centerArea">
+					<select class="selectCenter" th:field="*{centerNum}">
+						<option value="">센터명</option>
+						<option th:each="centerDtoList: ${centerDtoList}" th:value="${centerDtoList.centerNum}" th:text="${centerDtoList.centerName}"></option>
+					</select>
+					
+					<button id="selectCenterBtn" class="selectCenterBtn">확인</button>			
+	
+				</div>
+            </form>     
+            <form id="ticketForm">
                 <div class="content">
                     <table >
                         <colgroup>
@@ -72,24 +75,25 @@
                                 <button class="regitBtn">등록</button>
                             </td>
                         </tr><!--regitArea-->
-                        <tr class="listArea">
+                        <tr class="listArea" th:each="ticket: ${ticketDtoList}">
+                      
                             <td class="ticketContent">
-                                <div>1</div>
+                                <div th:text="${ticket.ticketNum}"></div>
                             </td>
                             <td class="ticketContent">
-                                <div>7월 EVENT</div>
+                                <div th:text="${ticket.ticketName}"></div>
                             </td>
                             <td class="ticketContent">
-                                <div>30</div>
+                                <div th:text="${ticket.ticketCount}"></div>
                             </td>
                             <td class="ticketContent">
-                                <div>2023.07.14</div>
+                                <div th:text="${ticket.startDate}"></div>
                             </td>
                             <td class="ticketContent">
-                                <div>2023.10.14</div>
+                                <div th:text="${ticket.endDate}"></div>
                             </td>
                             <td class="ticketContent">
-                                <div>green@naver.com</div>
+                                <div th:text="${ticket.memberEmail}"></div>
                             </td>
                         </tr><!--listArea-->
                     </table><!--.regitArea-->
@@ -97,6 +101,17 @@
             </form>
         </div><!--.container-->
     </div>
+    </th:block>
+    <th:block layout:fragment="script">
+	    <script th:inline="javascript">
+		    $(document).ready(function(){
+		    	var errorMessage = /*[[${errorMessage}]]*/ "";
+		    	if(errorMessage != null){
+		    		alert(errorMessage);
+		    	}
+		    });
+		    	     
+	    </script>
     </th:block>
 </body>
 </html>

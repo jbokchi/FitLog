@@ -38,4 +38,12 @@ public class CenterService {
 		
 		return centerDtoList;
 	}
+	
+	public CenterDto getCenterByCenterNum(Long centerNum) {
+		
+		Center center = centerRepository.findByCenterNum(centerNum);
+		CenterDto centerDto = CenterDto.of(center);
+		
+		return centerDto;
+	}
 }

@@ -27,6 +27,8 @@ public class TicketService {
 	private final CenterRepository centerRepository;
 	private final RegisterRepository registerRepository;
 	
+	
+	//일반회원의 자신의 회원권 목록 조회
 	public List<TicketDto> getTicketListByMember(String email){
 				
 		List<TicketDto> emptyTicket = new ArrayList<TicketDto>();
@@ -43,6 +45,8 @@ public class TicketService {
 		
 	}
 	
+	//센터의 티켓관리
+	//1.로그인한 강사의 소속 센터 목록 조회
 	public List<RegisterDto> getRegisterDtoByMemberNum(String email){
 		//강사의 센터 목록 
 		 Member member = memberRepository.findByEmail(email); 
@@ -51,16 +55,20 @@ public class TicketService {
 		 return registerDtoList;
 	}
 	
-//	 public List<TicketDto> getTicketByCenter(String email){
-//	 
-//		 //빈 회원권
-//		 List<TicketDto> emptyTicket = new ArrayList<>();
-//	  
-//		 //강사의 센터 목록 
-//		 Member member = memberRepository.findByEmail(email); 
-//		 List<RegisterDto> RegisterDtoList = registerRepository.findByMemberNum(member.getMemberNum());
-//
-//	  
-//	 }
+	//2.강사의 소속 센터가 가지고 있는 회원권 목록 조회
+	 public List<TicketDto> getTicketByCenter(Long centerNum){
+	 
+		 //빈 회원권
+		 List<TicketDto> emptyTicket = new ArrayList<>();
+		 //centerNum으로 조회한 회원권
+		 List<TicketDto> ticketDtoList = ticketRepository.findCenterTicketDtoList(centerNum);
+		 
+		 if(ticketDtoList.isEmpty()) {
+			 return emptyTicket;
+		 }
+		 
+		 return ticketDtoList;
+
+	 }
 	 
 }
